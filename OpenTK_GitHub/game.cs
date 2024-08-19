@@ -3,12 +3,18 @@ using OpenTK.Graphics.OpenGL;
 using OpenTK.Graphics;
 using OpenTK;
 using OpenTK.Input;
+using OpenTK_GitHub.Estructura;
+
 
 
 namespace OpenTK_GitHub
 {
     internal class game:GameWindow
     {
+        public object_T T1;
+        public object_T T2;
+        public object_T T3;
+
         string Figure;
         private float angle = 0.0f;      
 
@@ -32,114 +38,14 @@ namespace OpenTK_GitHub
             GL.LoadIdentity();
             GL.Translate(0.0f, 0.0f, -5.0f);
             GL.Rotate(angle*2, 0.0f, 0.5f, 0.0f);
-        
-            // Dibujar el letra "T"
-            GL.Begin(BeginMode.Quads);
 
-
-            /*--------------------------PARTE INFERIOR-----------------------------*/
-
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-
-            ///cara trasera |
-            GL.Vertex3(0.2f, 0.8f, 0.0f);
-            GL.Vertex3(0.2f, -0.8f, 0.0f);
-            GL.Vertex3(-0.2f, -0.8f, 0.0f);
-            GL.Vertex3(-0.2f, 0.8f, 0.0f);
-
-
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-            //cara delantera |
-            GL.Vertex3(0.2f, 0.8f, 0.2f);
-            GL.Vertex3(0.2f, -0.8f, 0.2f);
-            GL.Vertex3(-0.2f, -0.8f, 0.2f);
-            GL.Vertex3(-0.2f, 0.8f, 0.2f);
-
-
-            GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
-            //cara derecha |
-            GL.Vertex3(0.2f, 0.8f, 0.2f);
-            GL.Vertex3(0.2f, -0.8f, 0.2f);
-            GL.Vertex3(0.2f, -0.8f, 0.0f);
-            GL.Vertex3(0.2f, 0.8f, 0.0f);
-
-
-            GL.Color3(0.7f, 0.7f, 0.7f); // Gris claro
-            //cara izquierda |
-            GL.Vertex3(-0.2f, 0.8f, 0.0f);
-            GL.Vertex3(-0.2f, 0.8f, 0.2f);
-            GL.Vertex3(-0.2f, -0.8f, 0.2f);
-            GL.Vertex3(-0.2f, -0.8f, 0.0f);
-
-
-            GL.Color3(0.9f, 0.9f, 0.9f); // Gris muy claro
-            //cara Superior |
-            GL.Vertex3(0.2f, 0.8f, 0.2f);
-            GL.Vertex3(0.2f, 0.8f, 0.0f);
-            GL.Vertex3(-0.2f, 0.8f, 0.0f);
-            GL.Vertex3(-0.2f, 0.8f, 0.2f);
-
-
-            GL.Color3(0.5f, 0.5f, 0.5f); // Gris oscuro
-            //cara Inferior |
-            GL.Vertex3(0.2f, -0.8f, 0.0f);
-            GL.Vertex3(0.2f, -0.8f, 0.2f);
-            GL.Vertex3(-0.2f, -0.8f, 0.2f);
-            GL.Vertex3(-0.2f, -0.8f, 0.0f);
-
-
-            /*--------------------------PARTE SUPERIOR-----------------------------*/
-
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-            // cara  trasera--
-            GL.Vertex3(0.7f, 1.1f, 0.0f);
-            GL.Vertex3(0.7f, 0.8f, 0.0f);
-            GL.Vertex3(-0.7f, 0.8f, 0.0f);
-            GL.Vertex3(-0.7f, 1.1f, 0.0f);
-
-
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-            // cara delantera --
-            GL.Vertex3(0.7f, 1.1f, 0.2f);
-            GL.Vertex3(0.7f, 0.8f, 0.2f);
-            GL.Vertex3(-0.7f, 0.8f, 0.2f);
-            GL.Vertex3(-0.7f, 1.1f, 0.2f);
-
-
-            GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
-            //Cara derecha --
-            GL.Vertex3(0.7f, 1.1f, 0.2f);
-            GL.Vertex3(0.7f, 0.8f, 0.2f);
-            GL.Vertex3(0.7f, 0.8f, 0.0f);
-            GL.Vertex3(0.7f, 1.1f, 0.0f);
-
-
-            GL.Color3(0.7f, 0.7f, 0.7f); // Gris claro
-            //Cara izquierda --
-            GL.Vertex3(-0.7f, 1.1f, 0.0f);
-            GL.Vertex3(-0.7f, 0.8f, 0.0f);
-            GL.Vertex3(-0.7f, 0.8f, 0.2f);
-            GL.Vertex3(-0.7f, 1.1f, 0.2f);
-
-
-            GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
-            //Cara superior  --
-            GL.Vertex3(0.7f, 1.1f, 0.2f);
-            GL.Vertex3(0.7f, 1.1f, 0.0f);
-            GL.Vertex3(-0.7f, 1.1f, 0.0f);
-            GL.Vertex3(-0.7f, 1.1f, 0.2f);
-
-
-            GL.Color3(0.5f, 0.5f, 0.5f); // Gris oscuro
-            //Cara inferior  --
-            GL.Vertex3(0.7f, 0.8f, 0.0f);
-            GL.Vertex3(0.7f, 0.8f, 0.2f);
-            GL.Vertex3(-0.7f, 0.8f, 0.2f);
-            GL.Vertex3(-0.7f, 0.8f, 0.0f);
-           
-            GL.End();
-
-
+            T1 = new object_T(new origen(), 0.2f, 0.8f, 0.0f);
+            T2 = new object_T(new origen(1.5f, 1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
+            T3 = new object_T(new origen(-1.5f, -1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
+            T1.draw();
+            T2.draw();
+            T3.draw();
+          
             Context.SwapBuffers();
             base.OnRenderFrame(e);
         }
@@ -150,8 +56,8 @@ namespace OpenTK_GitHub
             GL.Viewport(0, 0, Width,Height);
             GL.MatrixMode(MatrixMode.Projection);
             GL.LoadIdentity();
-            Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(45.0f), 
-            (float)this.Width / (float)this.Height, 0.1f, 90.0f);
+            Matrix4 perspective = Matrix4.CreatePerspectiveFieldOfView(MathHelper.DegreesToRadians(50.0f), 
+            (float)this.Width / (float)this.Height, 0.1f, 100.0f);
             GL.LoadMatrix(ref perspective);
             GL.MatrixMode(MatrixMode.Modelview);
 
