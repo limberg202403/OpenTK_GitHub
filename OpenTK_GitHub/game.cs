@@ -1,6 +1,6 @@
 ﻿using System;
 using OpenTK.Graphics.OpenGL;
-using OpenTK.Graphics;
+
 using OpenTK;
 using OpenTK.Input;
 using OpenTK_GitHub.Estructura;
@@ -21,7 +21,7 @@ namespace OpenTK_GitHub
         public game(String figure, float width, float height ) : base() {
             this.Figure = figure;            
         }
-           
+
         protected override void OnLoad(EventArgs e)
         {
             GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
@@ -40,10 +40,10 @@ namespace OpenTK_GitHub
             GL.Rotate(angle*2, 0.0f, 0.5f, 0.0f);
 
             T1 = new object_T(new origen(), 0.2f, 0.8f, 0.0f);
-            T2 = new object_T(new origen(1.5f, 1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
+            T2 = new object_T(new origen(1.5f, 1.0f, 0.0f), 0.2f, 0.8f, 0.0f);                                                
             T3 = new object_T(new origen(-1.5f, -1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
             T1.draw();
-            T2.draw();
+            T2.draw();            
             T3.draw();
           
             Context.SwapBuffers();
@@ -69,7 +69,6 @@ namespace OpenTK_GitHub
             GL.Disable(EnableCap.DepthTest);
             base.OnUnload(e);
         }
-
 
         protected override void OnUpdateFrame(FrameEventArgs e)
         {                        
