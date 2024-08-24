@@ -1,6 +1,5 @@
 ﻿using System;
 using OpenTK.Graphics.OpenGL;
-
 using OpenTK;
 using OpenTK.Input;
 using OpenTK_GitHub.Estructura;

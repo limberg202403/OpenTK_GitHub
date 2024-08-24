@@ -29,168 +29,128 @@ namespace OpenTK_GitHub.Estructura
 
         public void draw()
         {
-            BeginMode beginM = BeginMode.Quads;
+            PrimitiveType beginM = PrimitiveType.Quads;
 
-            caraTraseraI(beginM);
-            caraDelanteraI(beginM);
-            caraDerechaI(beginM);
-            caraIzquierdaI(beginM);
-            caraSuperiorI(beginM);
-            caraInferiorI(beginM);
+            /*----------------    PARTE INFERIOR     ----------------------*/
+          
+                GL.Begin(beginM);
+                GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
 
-            caraTraseraS(beginM);
-            caraDelanteraS(beginM);
-            caraDerechaS(beginM);
-            caraIzquierdaS(beginM);
-            caraSuperiorS(beginM);
-            caraInferiorS(beginM);
+                GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad);
+                GL.End();
+
+            
+                GL.Begin(beginM);
+                GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
+
+                GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.End();
+           
+                GL.Begin(beginM);
+                GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
+
+                GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad);
+                GL.End();
+           
+                GL.Begin(beginM);
+                GL.Color3(0.7f, 0.7f, 0.7f); // Gris claro
+
+                GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad);
+                GL.End();
+           
+                GL.Begin(beginM);
+                GL.Color3(0.9f, 0.9f, 0.9f); // Gris muy claro
+
+                GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.End();
+          
+                GL.Begin(beginM);
+                GL.Color3(0.5f, 0.5f, 0.5f); // Gris oscuro
+
+                GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad);
+                GL.End();
+            
+
+            /*------------------------  PARTE SUPERIOR ---------------------------------*/
+
+                GL.Begin(beginM);
+                GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
+
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad);
+                GL.End();
+           
+
+                GL.Begin(beginM);
+                GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
+
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
+                GL.End();
+          
+                GL.Begin(beginM);
+                GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
+
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad);
+                GL.End();
+          
+                GL.Begin(beginM);
+                GL.Color3(0.7f, 0.7f, 0.7f); // Gris claro
+
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
+                GL.End();
+           
+                GL.Begin(beginM);
+                GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
+
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
+
+                GL.End();
+           
+                GL.Begin(beginM);
+                GL.Color3(0.5f, 0.5f, 0.5f); // Gris oscuro
+
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad);
+                GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad + zz);
+                GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad);
+
+                GL.End();
+            
 
         }
 
-        /*----------------    PARTE INFERIOR     ----------------------*/
-        public void caraTraseraI(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-
-            GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad);
-            GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad);
-            GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad);
-            GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad);
-
-            GL.End();
-
-        }
-        public void caraDelanteraI(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-
-
-            GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad+zz);
-            GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad+zz);
-            GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad+zz);
-            GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad+zz);
-            GL.End();
-        }
-        public void caraDerechaI(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
-            GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad );
-
-            GL.End();
-        }
-        public void caraIzquierdaI(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.7f, 0.7f, 0.7f); // Gris claro
-
-            GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad );
-
-            GL.End();
-        }
-        public void caraSuperiorI(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.9f, 0.9f, 0.9f); // Gris muy claro
-            GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X + ancho, punto.Y + alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho, punto.Y + alto, punto.Z + profundidad + zz);
-
-            GL.End();
-        }
-        public void caraInferiorI(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.5f, 0.5f, 0.5f); // Gris oscuro
-            GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X + ancho, punto.Y - alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho, punto.Y - alto, punto.Z + profundidad );
-
-            GL.End();
-        }
-
-        /*------------------------  PARTE SUPERIOR ---------------------------------*/
-
-        public void caraTraseraS(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-
-            GL.Vertex3(punto.X + ancho +xx, punto.Y + alto+yy , punto.Z + profundidad);
-            GL.Vertex3(punto.X + ancho +xx, punto.Y + alto, punto.Z + profundidad);
-            GL.Vertex3(punto.X - ancho -xx, punto.Y + alto, punto.Z + profundidad);
-            GL.Vertex3(punto.X - ancho -xx, punto.Y + alto+yy, punto.Z + profundidad);
-
-            GL.End();
-        }
-        public void caraDelanteraS(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.8f, 0.8f, 0.8f); // Gris más claro
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad+zz);
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad+zz);
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad+zz);
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad+zz);
-
-            GL.End();
-        }
-        public void caraDerechaS(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
-
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad );
-
-            GL.End();
-        }
-        public void caraIzquierdaS(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.7f, 0.7f, 0.7f); // Gris claro
-
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
-
-            GL.End();
-        }
-        public void caraSuperiorS(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.6f, 0.6f, 0.6f); // Gris más oscuro
-
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto + yy, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad );
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto + yy, punto.Z + profundidad + zz);
-
-            GL.End();
-        }
-        public void caraInferiorS(BeginMode beginM)
-        {
-            GL.Begin(beginM);
-            GL.Color3(0.5f, 0.5f, 0.5f); // Gris oscuro
-
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto , punto.Z + profundidad );
-            GL.Vertex3(punto.X + ancho + xx, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto, punto.Z + profundidad + zz);
-            GL.Vertex3(punto.X - ancho - xx, punto.Y + alto , punto.Z + profundidad );
-
-            GL.End();
-        }
+      
     }
 }
