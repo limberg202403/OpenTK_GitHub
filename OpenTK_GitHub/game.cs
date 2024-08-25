@@ -1,31 +1,60 @@
 ﻿using System;
 using OpenTK.Graphics.OpenGL;
+using OpenTK.Graphics;
+using System.Drawing;
 using OpenTK;
 using OpenTK.Input;
 using OpenTK_GitHub.Estructura;
+using OpenTK_GitHub.Entorno;
 
 
 
 namespace OpenTK_GitHub
 {
-    internal class game:GameWindow
+    public class game:GameWindow
     {
         public object_T T1;
         public object_T T2;
         public object_T T3;
 
+        stage escenario = new stage();
+        objeto T = new objeto();
+        polygon caraFrontalp = new polygon();
+
         string Figure;
-        private float angle = 0.0f;      
+        private float angle = 0.0f;
+
+        
 
         public game(String figure, float width, float height ) : base() {
-            this.Figure = figure;            
-        }
+            this.Figure = figure;
+        
+        }               
+
 
         protected override void OnLoad(EventArgs e)
         {
             GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
-            // GL.ClearColor(Color.SlateGray);
+            polygon caraFrontalp = new polygon();
+            caraFrontalp.addPunto(new Vector3(0.2f, 0.8f, 0.0f  ));
+            caraFrontalp.addPunto(new Vector3(0.2f, -0.8f, 0.0f ));
+            caraFrontalp.addPunto(new Vector3(-0.2f, -0.8f, 0.0f));
+            caraFrontalp.addPunto(new Vector3(-0.2f, 0.8f, 0.0f));
+            caraFrontalp.color = Color4.Blue;
+
+
+            part partesCub = new part();
+            partesCub.center = new origen(0.0f, 0.0f, 0.0f);
+            
+
+
+            T.center = new origen(0.0f, 0.0f, 0.0f);
+            T.AgregarPartes("ParteSup",partesCub);
+
+            escenario.AgregarObjeto("letraT", T);
+
+
             base.OnLoad(e);
         }
 
@@ -38,13 +67,14 @@ namespace OpenTK_GitHub
             GL.Translate(0.0f, 0.0f, -5.0f);
             GL.Rotate(angle*2, 0.0f, 0.5f, 0.0f);
 
-            T1 = new object_T(new origen(), 0.2f, 0.8f, 0.0f);
-            T2 = new object_T(new origen(1.5f, 1.0f, 0.0f), 0.2f, 0.8f, 0.0f);                                                
-            T3 = new object_T(new origen(-1.5f, -1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
-            T1.draw();
-            T2.draw();            
-            T3.draw();
-          
+            //T1 = new object_T(new origen(), 0.2f, 0.8f, 0.0f);
+            //T2 = new object_T(new origen(1.5f, 1.0f, 0.0f), 0.2f, 0.8f, 0.0f);                                                
+            //T3 = new object_T(new origen(-1.5f, -1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
+            //T1.draw();
+            //T2.draw();            
+            //T3.draw();
+            escenario.DibujarEscenario();
+
             Context.SwapBuffers();
             base.OnRenderFrame(e);
         }
