@@ -15,8 +15,7 @@ namespace OpenTK_GitHub.Entorno
 {
     public class part
     {
-
-        public Dictionary<string, polygon> ConjPoligonos { get; private set; }
+        public Dictionary<string, polygon> ConjPoligonos { get;  set; }
         public origen center { get; set; }
 
         public part()
@@ -30,21 +29,31 @@ namespace OpenTK_GitHub.Entorno
             this.center = CentroDeMasa;
         }
 
-        public void AgregarCara(string nombreCara, polygon poligonos)
+        public void addPolygon(string namePolygon, polygon newPolygon)
         {
-            ConjPoligonos.Add(nombreCara, poligonos);
-
+            ConjPoligonos.Add(namePolygon,newPolygon);
         }
-      
-        public void DibujarFigura()
+        
+        public polygon getPolygon(string namePolygon)
         {
-            foreach (polygon cara in ConjPoligonos.Values)
+            if (ConjPoligonos.ContainsKey(namePolygon))
             {
-                GL.PushMatrix();
-                GL.Translate(center.X, center.Y, center.Z);
-                cara.dibujar();
-                GL.PopMatrix();
+                return ConjPoligonos[namePolygon];
             }
+            else return null;
+        }
+
+        public void deletePolygon(string namePolygon)
+        {
+            ConjPoligonos.Remove(namePolygon);
+        }
+
+        public void dibujar()
+        {
+            foreach (polygon poligono in ConjPoligonos.Values)
+            {             
+                poligono.dibujar();             
+           }
         }
 
     }

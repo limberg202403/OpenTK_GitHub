@@ -9,6 +9,7 @@ using OpenTK_GitHub.Entorno;
 
 
 
+
 namespace OpenTK_GitHub
 {
     public class game:GameWindow
@@ -19,7 +20,6 @@ namespace OpenTK_GitHub
 
         stage escenario = new stage();
         objeto T = new objeto();
-        polygon caraFrontalp = new polygon();
 
         string Figure;
         private float angle = 0.0f;
@@ -37,24 +37,119 @@ namespace OpenTK_GitHub
             GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
 
             polygon caraFrontalp = new polygon();
-            caraFrontalp.addPunto(new Vector3(0.2f, 0.8f, 0.0f  ));
-            caraFrontalp.addPunto(new Vector3(0.2f, -0.8f, 0.0f ));
-            caraFrontalp.addPunto(new Vector3(-0.2f, -0.8f, 0.0f));
-            caraFrontalp.addPunto(new Vector3(-0.2f, 0.8f, 0.0f));
-            caraFrontalp.color = Color4.Blue;
+            caraFrontalp.newVertice(new Vector3(0.2f, 0.8f, 0.0f ));
+            caraFrontalp.newVertice(new Vector3(0.2f, -0.8f, 0.0f ));
+            caraFrontalp.newVertice(new Vector3(-0.2f, -0.8f, 0.0f));
+            caraFrontalp.newVertice(new Vector3(-0.2f, 0.8f, 0.0f));
+            caraFrontalp.color = new Color4(0.8f, 0.8f, 0.8f, 0.8f);
+
+
+            polygon caraAtrasp = new polygon();
+            caraAtrasp.newVertice(new Vector3(0.2f, 0.8f, 0.2f  ));
+            caraAtrasp.newVertice(new Vector3(0.2f, -0.8f, 0.2f ));
+            caraAtrasp.newVertice(new Vector3(-0.2f, -0.8f, 0.2f));
+            caraAtrasp.newVertice(new Vector3(-0.2f, 0.8f, 0.2f));
+            caraAtrasp.color = new Color4(0.8f, 0.8f, 0.8f, 0.8f);
+         
+
+            polygon caraDerechap = new polygon();
+            caraDerechap.newVertice(new Vector3(0.2f, 0.8f, 0.2f  ));
+            caraDerechap.newVertice(new Vector3(0.2f, -0.8f, 0.2f ));
+            caraDerechap.newVertice(new Vector3(0.2f, -0.8f, 0.0f  ));
+            caraDerechap.newVertice(new Vector3(0.2f, 0.8f, 0.0f));
+            caraDerechap.color = new Color4(0.6f, 0.6f, 0.6f, 0.6f);
+
+            polygon caraIzquierdap = new polygon();
+            caraIzquierdap.newVertice(new Vector3(-0.2f, 0.8f, 0.0f  ));
+            caraIzquierdap.newVertice(new Vector3(-0.2f, 0.8f, 0.2f   ));
+            caraIzquierdap.newVertice(new Vector3(-0.2f, -0.8f, 0.2f  ));
+            caraIzquierdap.newVertice(new Vector3(-0.2f, -0.8f, 0.0f  ));
+            caraIzquierdap.color = new Color4(0.7f, 0.7f, 0.7f,0.7f);
+
+            polygon caraSuperiorp = new polygon();
+            caraSuperiorp.newVertice(new Vector3(0.2f, 0.8f, 0.2f ));
+            caraSuperiorp.newVertice(new Vector3(0.2f, 0.8f, 0.0f ));
+            caraSuperiorp.newVertice(new Vector3(-0.2f, 0.8f, 0.0f ));
+            caraSuperiorp.newVertice(new Vector3(-0.2f, 0.8f, 0.2f));
+            caraSuperiorp.color = new Color4(0.9f, 0.9f, 0.9f, 0.9f);
+
+            polygon caraInferiorp = new polygon();
+            caraInferiorp.newVertice(new Vector3(0.2f, -0.8f, 0.0f ));
+            caraInferiorp.newVertice(new Vector3(0.2f, -0.8f, 0.2f ));
+            caraInferiorp.newVertice(new Vector3(-0.2f, -0.8f, 0.2f ));
+            caraInferiorp.newVertice(new Vector3(-0.2f, -0.8f, 0.0f));
+            caraInferiorp.color = new Color4(0.5f, 0.5f, 0.5f, 0.5f);
+
+
+            //---------------------------------PARTE SUPERIOR----------------------------------------------//
+
+
+            polygon caraAtrass = new polygon();
+            caraAtrass.newVertice(new Vector3(0.7f, 1.1f, 0.0f));
+            caraAtrass.newVertice(new Vector3(0.7f, 0.8f, 0.0f));
+            caraAtrass.newVertice(new Vector3(-0.7f, 0.8f, 0.0f));
+            caraAtrass.newVertice(new Vector3(-0.7f, 1.1f, 0.0f));
+            caraAtrass.color = new Color4(0.8f, 0.8f, 0.8f, 0.8f);
+
+            polygon caraAdelantes = new polygon();
+            caraAdelantes.newVertice(new Vector3(0.7f, 1.1f, 0.2f));
+            caraAdelantes.newVertice(new Vector3(0.7f, 0.8f, 0.2f));
+            caraAdelantes.newVertice(new Vector3(-0.7f, 0.8f, 0.2f));
+            caraAdelantes.newVertice(new Vector3(-0.7f, 1.1f, 0.2f));
+            caraAdelantes.color = new Color4(0.8f, 0.8f, 0.8f, 0.8f);
+      
+            polygon caraDers = new polygon();
+            caraDers.newVertice(new Vector3(0.7f, 1.1f, 0.2f));
+            caraDers.newVertice(new Vector3(0.7f, 0.8f, 0.2f));
+            caraDers.newVertice(new Vector3(0.7f, 0.8f, 0.0f));
+            caraDers.newVertice(new Vector3(0.7f, 1.1f, 0.0f));
+            caraDers.color = new Color4(0.6f, 0.6f, 0.6f, 0.6f);
+        
+            polygon caraIzqs = new polygon();
+            caraIzqs.newVertice(new Vector3(-0.7f, 1.1f, 0.0f));
+            caraIzqs.newVertice(new Vector3(-0.7f, 0.8f, 0.0f));
+            caraIzqs.newVertice(new Vector3(-0.7f, 0.8f, 0.2f));
+            caraIzqs.newVertice(new Vector3(-0.7f, 1.1f, 0.2f));
+            caraIzqs.color = new Color4(0.7f, 0.7f, 0.7f, 0.7f);
+        
+            polygon caraSups = new polygon();
+            caraSups.newVertice(new Vector3(0.7f, 1.1f, 0.2f));
+            caraSups.newVertice(new Vector3(0.7f, 1.1f, 0.0f));
+            caraSups.newVertice(new Vector3(-0.7f, 1.1f, 0.0f));
+            caraSups.newVertice(new Vector3(-0.7f, 1.1f, 0.2f));
+            caraSups.color = new Color4(0.6f, 0.6f, 0.6f, 0.6f);         
+
+            polygon caraInfs = new polygon();
+            caraInfs.newVertice(new Vector3(0.7f, 0.8f, 0.0f));
+            caraInfs.newVertice(new Vector3(0.7f, 0.8f, 0.2f));
+            caraInfs.newVertice(new Vector3(-0.7f, 0.8f, 0.2f));
+            caraInfs.newVertice(new Vector3(-0.7f, 0.8f, 0.0f));
+            caraInfs.color = new Color4(0.5f, 0.5f, 0.5f, 0.5f);
+
 
 
             part partesCub = new part();
-            partesCub.center = new origen(0.0f, 0.0f, 0.0f);
-            
 
+            partesCub.center = new origen(0.0f,0.0f,0.0f);
 
-            T.center = new origen(0.0f, 0.0f, 0.0f);
-            T.AgregarPartes("ParteSup",partesCub);
+            partesCub.addPolygon("traserap", caraFrontalp);
+            partesCub.addPolygon("delanterap", caraAtrasp);
+            partesCub.addPolygon("Derechap", caraDerechap);
+            partesCub.addPolygon("Izquierdap", caraIzquierdap);
+            partesCub.addPolygon("Superiorp", caraSuperiorp);
+            partesCub.addPolygon("Inferiorp", caraInferiorp);
 
-            escenario.AgregarObjeto("letraT", T);
+            partesCub.addPolygon("traseras", caraAtrass);
+            partesCub.addPolygon("delanteras", caraAdelantes);
+            partesCub.addPolygon("Derechas", caraDers);
+            partesCub.addPolygon("Izquierdas", caraIzqs);
+            partesCub.addPolygon("Superiors", caraSups);
+            partesCub.addPolygon("Inferiors", caraInfs);
 
+            T.center = new origen(0.0f,0.0f,0.0f);
+            T.addPart("T",partesCub);
 
+            escenario.addObject("letraT", T);
             base.OnLoad(e);
         }
 
@@ -66,14 +161,8 @@ namespace OpenTK_GitHub
             GL.LoadIdentity();
             GL.Translate(0.0f, 0.0f, -5.0f);
             GL.Rotate(angle*2, 0.0f, 0.5f, 0.0f);
-
-            //T1 = new object_T(new origen(), 0.2f, 0.8f, 0.0f);
-            //T2 = new object_T(new origen(1.5f, 1.0f, 0.0f), 0.2f, 0.8f, 0.0f);                                                
-            //T3 = new object_T(new origen(-1.5f, -1.0f, 0.0f), 0.2f, 0.8f, 0.0f);
-            //T1.draw();
-            //T2.draw();            
-            //T3.draw();
-            escenario.DibujarEscenario();
+         
+            escenario.dibujar();
 
             Context.SwapBuffers();
             base.OnRenderFrame(e);

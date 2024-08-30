@@ -16,7 +16,6 @@ namespace OpenTK_GitHub.Estructura
 
      
         public origen() : this(0, 0, 0) { }
-
       
         public origen(float x, float y, float z)
         {

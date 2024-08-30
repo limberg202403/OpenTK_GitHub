@@ -12,42 +12,50 @@ namespace OpenTK_GitHub.Entorno
 {
     public class stage
     {
-        public Dictionary<string, objeto> ObjetosEscenario { get; private set; }
+        public Dictionary<string, objeto> ConjObjects { get; set; }
         public origen center { get; set; }
 
         public stage()
         {
-            ObjetosEscenario = new Dictionary<string, objeto>();
+            ConjObjects = new Dictionary<string, objeto>();
         }
 
         public stage(Dictionary<string, objeto> objeto, origen center)
         {
-            ObjetosEscenario = objeto;
+            ConjObjects = objeto;
             this.center = center;
         }
 
-        public void AgregarObjeto(string nombreObjeto, objeto Objeto)
+        public void addObject(string nameObject, objeto newObjeto)
         {
-        
-            ObjetosEscenario.Add(nombreObjeto, Objeto);
+            ConjObjects.Add(nameObject, newObjeto);
         }
 
-        public objeto ObtenerObjetoPorNombre(string nombreObjeto)
+        public objeto getObject(string nameObject)
         {
-            if (ObjetosEscenario.ContainsKey(nombreObjeto))
+            if (ConjObjects.ContainsKey(nameObject))
             {
-                return ObjetosEscenario[nombreObjeto];
+                return ConjObjects[nameObject];
             }
             else return null;
-            
         }
-     
 
-        public void DibujarEscenario()
+        public bool deleteObject(string nameObject)
         {
-            foreach (objeto Objeto in ObjetosEscenario.Values)
+            if (ConjObjects.ContainsKey(nameObject))
             {
-                Objeto.DibujarObjeto();
+                ConjObjects.Remove(nameObject);               
+                return true;
+            }
+            else return false;            
+        }
+ 
+
+        public void dibujar()
+        {
+            foreach (objeto Objeto in ConjObjects.Values)
+            {
+                Objeto.dibujar();
             }
         }
 

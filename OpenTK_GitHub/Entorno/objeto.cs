@@ -9,47 +9,45 @@ namespace OpenTK_GitHub.Entorno
 {
     public class objeto
     {
-
-        public Dictionary<string, part> PartesObjeto { get; private set; }
+        public Dictionary<string, part> ConjPartes { get; set; }
         public origen center { get; set; }
-
 
         public objeto()
         {
-            PartesObjeto = new Dictionary<string, part>();
-            center = new origen(0, 0, 0); // Inicializar el centro de masa del objeto
+            ConjPartes = new Dictionary<string, part>();
+            center = new origen(); 
         }
 
         public objeto(Dictionary<string, part> partes, origen centro)
         {
-            PartesObjeto = partes;
+            ConjPartes = partes;
             this.center = centro;
         }
 
-        public void AgregarPartes(string nombrePartes, part partes)
+        public void addPart(string NamePart, part newPart)
         {
-        
-            PartesObjeto.Add(nombrePartes, partes);
+            ConjPartes.Add(NamePart, newPart);
+        }
+    
+        public part getPart(string namePart)
+        {
+            if (ConjPartes.ContainsKey(namePart))
+            {
+                return ConjPartes[namePart];
+            }
+            else return null;
         }
 
-        public part ObtenerPartePorNombre(string nombreParte)
+        public void deletePart(string NamePart)
         {
-            if (PartesObjeto.ContainsKey(nombreParte))
-            {
-                return PartesObjeto[nombreParte];
-            }
-            else
-            {
-                return null;
-            }
+            ConjPartes.Remove(NamePart);
         }
 
-      
-        public void DibujarObjeto()
+        public void dibujar()
         {
-            foreach (part partes in PartesObjeto.Values)
+            foreach (part partes in ConjPartes.Values)
             {
-                partes.DibujarFigura();
+                partes.dibujar();
             }
         }
     }
