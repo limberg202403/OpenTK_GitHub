@@ -14,9 +14,7 @@ namespace OpenTK_GitHub
 {
     public class game:GameWindow
     {
-        public object_T T1;
-        public object_T T2;
-        public object_T T3;
+     
 
         stage escenario = new stage();
         objeto T = new objeto();

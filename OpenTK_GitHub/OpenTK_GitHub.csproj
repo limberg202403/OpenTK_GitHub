@@ -77,7 +77,6 @@
     <Compile Include="Entorno\part.cs" />
     <Compile Include="Entorno\polygon.cs" />
     <Compile Include="Entorno\stage.cs" />
-    <Compile Include="Estructura\object_T.cs" />
     <Compile Include="Estructura\origen.cs" />
     <Compile Include="game.cs" />
     <Compile Include="Program.cs" />
