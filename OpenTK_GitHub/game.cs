@@ -27,15 +27,13 @@ namespace OpenTK_GitHub
         
 
         public game(String figure, float width, float height ) : base() {
-            this.Figure = figure;
+            Figure = figure;
         
         }               
 
 
-        protected override void OnLoad(EventArgs e)
+        private void objectT()
         {
-            GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
-
             polygon caraFrontalp = new polygon();
             caraFrontalp.newVertice(new Vector3(0.2f, 0.8f, 0.0f ));
             caraFrontalp.newVertice(new Vector3(0.2f, -0.8f, 0.0f ));
@@ -150,6 +148,13 @@ namespace OpenTK_GitHub
             T.addPart("T",partesCub);
 
             escenario.addObject("letraT", T);
+        }
+        protected override void OnLoad(EventArgs e)
+        {
+            GL.ClearColor(0.2f, 0.2f, 0.2f, 1.0f);
+
+             objectT();
+
             base.OnLoad(e);
         }
 

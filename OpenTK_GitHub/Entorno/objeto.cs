@@ -21,7 +21,7 @@ namespace OpenTK_GitHub.Entorno
         public objeto(Dictionary<string, part> partes, origen centro)
         {
             ConjPartes = partes;
-            this.center = centro;
+            center = centro;
         }
 
         public void addPart(string NamePart, part newPart)

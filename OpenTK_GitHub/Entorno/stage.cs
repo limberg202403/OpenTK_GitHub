@@ -18,6 +18,7 @@ namespace OpenTK_GitHub.Entorno
         public stage()
         {
             ConjObjects = new Dictionary<string, objeto>();
+            center = new origen();
         }
 
         public stage(Dictionary<string, objeto> objeto, origen center)

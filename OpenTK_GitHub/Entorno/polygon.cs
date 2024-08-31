@@ -44,7 +44,7 @@ namespace OpenTK_GitHub.Entorno
         {
 
             GL.Color4(color);
-            GL.Begin(PrimitiveType.Quads);
+            GL.Begin(PrimitiveType.Polygon);
 
             foreach (var vertice in ConjVertices)
             {
