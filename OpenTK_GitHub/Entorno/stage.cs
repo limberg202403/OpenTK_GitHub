@@ -7,11 +7,13 @@ using OpenTK_GitHub.Estructura;
 using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
+using Newtonsoft.Json;
 
 namespace OpenTK_GitHub.Entorno
 {
-    public class stage
+     class stage
     {
+        [JsonProperty("objects")]
         public Dictionary<string, objeto> ConjObjects { get; set; }
         public origen center { get; set; }
 

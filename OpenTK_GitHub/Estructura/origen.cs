@@ -34,8 +34,5 @@ namespace OpenTK_GitHub.Estructura
             Z = t.Z;
         }
 
-       
-
-
     }
 }

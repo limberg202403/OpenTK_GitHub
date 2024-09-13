@@ -8,13 +8,15 @@ using OpenTK;
 using OpenTK.Graphics;
 using OpenTK.Graphics.OpenGL;
 using OpenTK_GitHub.Estructura;
-
+using Newtonsoft.Json;
 
 
 namespace OpenTK_GitHub.Entorno
 {
-    public class part
+    class part
     {
+        [JsonProperty("polygons")]
+
         public Dictionary<string, polygon> ConjPoligonos { get;  set; }
         public origen center { get; set; }
 

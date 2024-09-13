@@ -5,14 +5,13 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using OpenTK_GitHub.Estructura;
-
-
+using Newtonsoft.Json;
 
 namespace OpenTK_GitHub.Entorno
 {
-    public class polygon
+    class polygon
     {       
-
+        [JsonProperty("vertices")]
         public List<Vector3> ConjVertices { get; set; }
         public string name { get; set; }
         public Color4 color { get; set; }

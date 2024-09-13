@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenTK_GitHub.Estructura;
+using Newtonsoft.Json;
 
 namespace OpenTK_GitHub.Entorno
 {
-    public class objeto
+    class objeto
     {
+        [JsonProperty("parts")]
         public Dictionary<string, part> ConjPartes { get; set; }
         public origen center { get; set; }
 
