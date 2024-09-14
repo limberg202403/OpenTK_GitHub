@@ -16,23 +16,25 @@ namespace OpenTK_GitHub.Entorno
         [JsonProperty("objects")]
         public Dictionary<string, objeto> ConjObjects { get; set; }
         public origen center { get; set; }
-
         public stage()
         {
             ConjObjects = new Dictionary<string, objeto>();
             center = new origen();
         }
 
-        public stage(Dictionary<string, objeto> objeto, origen center)
+        public stage(Dictionary<string, objeto> objeto, origen centro)
         {
             ConjObjects = objeto;
-            this.center = center;
+            center = centro;
         }
 
         public void addObject(string nameObject, objeto newObjeto)
         {
+            newObjeto.center += center;
             ConjObjects.Add(nameObject, newObjeto);
         }
+
+ 
 
         public objeto getObject(string nameObject)
         {
@@ -58,7 +60,54 @@ namespace OpenTK_GitHub.Entorno
         {
             foreach (objeto Objeto in ConjObjects.Values)
             {
+               Objeto.Trasladar(center.X, center.Y, center.Z);
                 Objeto.dibujar();
+                Objeto.Trasladar(-center.X, -center.Y, -center.Z);
+
+            }
+        }
+
+
+        //-------------------------------- TRANSFORMACIONES   -------------------------------//
+
+        public void Transladar(float x, float y, float z)
+        {
+
+            center = new origen(center.X + x, center.Y + y, center.Z + z);
+            foreach (objeto objeto in ConjObjects.Values)
+            {
+                objeto.Trasladar(x, y, z);
+            }
+        }
+
+        public void Scalar(float n)
+        {
+            foreach (objeto objeto in ConjObjects.Values)
+            {
+                objeto.Scalar(n);
+            }
+        }
+
+        public void ScalarCentro(origen origin, float n)
+        {
+            foreach (objeto objeto in ConjObjects.Values)
+            {
+                objeto.ScalarCentro(origin, n);
+            }
+        }
+        public void Rotar(string vertice, float angle)
+        {
+            foreach (objeto objeto in ConjObjects.Values)
+            {
+                objeto.Rotar(vertice, angle);
+            }
+        }
+
+        public void RotarCentro(origen origin, string vertice, float angle)
+        {
+            foreach (objeto objeto in ConjObjects.Values)
+            {
+                objeto.RotarCentro(origin, vertice, angle);
             }
         }
 

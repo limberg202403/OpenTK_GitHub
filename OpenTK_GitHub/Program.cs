@@ -12,6 +12,7 @@ namespace OpenTK_GitHub
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
 

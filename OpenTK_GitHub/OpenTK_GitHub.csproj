@@ -83,11 +83,13 @@
     <Compile Include="Estructura\origen.cs" />
     <Compile Include="Estructura\SceneSerializer.cs" />
     <Compile Include="game.cs" />
+    <Compile Include="IDTransformacion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Entorno\escenario.json" />
     <None Include="OpenTK.dll.config" />
     <None Include="packages.config" />
   </ItemGroup>
