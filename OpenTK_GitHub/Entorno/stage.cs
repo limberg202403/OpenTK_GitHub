@@ -15,12 +15,13 @@ namespace OpenTK_GitHub.Entorno
     {
         [JsonProperty("objects")]
         public Dictionary<string, objeto> ConjObjects { get; set; }
+        [JsonProperty("centro")]
         public origen center { get; set; }
         public stage()
         {
             ConjObjects = new Dictionary<string, objeto>();
             center = new origen();
-        }
+        }     
 
         public stage(Dictionary<string, objeto> objeto, origen centro)
         {
@@ -32,82 +33,48 @@ namespace OpenTK_GitHub.Entorno
         {
             newObjeto.center += center;
             ConjObjects.Add(nameObject, newObjeto);
-        }
-
- 
+        } 
 
         public objeto getObject(string nameObject)
-        {
-            if (ConjObjects.ContainsKey(nameObject))
-            {
-                return ConjObjects[nameObject];
-            }
-            else return null;
+        {        
+                return ConjObjects[nameObject];          
         }
 
         public bool deleteObject(string nameObject)
-        {
-            if (ConjObjects.ContainsKey(nameObject))
-            {
-                ConjObjects.Remove(nameObject);               
-                return true;
-            }
-            else return false;            
+        {          
+                return ConjObjects.Remove(nameObject);                               
         }
  
-
         public void dibujar()
         {
             foreach (objeto Objeto in ConjObjects.Values)
             {
-               Objeto.Trasladar(center.X, center.Y, center.Z);
-                Objeto.dibujar();
-                Objeto.Trasladar(-center.X, -center.Y, -center.Z);
+                Objeto.dibujar(center);
 
             }
         }
-
 
         //-------------------------------- TRANSFORMACIONES   -------------------------------//
 
-        public void Transladar(float x, float y, float z)
+        public void translate(string eje, float translateValue)
         {
-
-            center = new origen(center.X + x, center.Y + y, center.Z + z);
             foreach (objeto objeto in ConjObjects.Values)
             {
-                objeto.Trasladar(x, y, z);
+                objeto.translate(eje, translateValue);
             }
         }
-
-        public void Scalar(float n)
+        public void scale(float scaleValue)
         {
             foreach (objeto objeto in ConjObjects.Values)
             {
-                objeto.Scalar(n);
+                objeto.scale(scaleValue);
             }
         }
-
-        public void ScalarCentro(origen origin, float n)
+        public void rotate(string eje, float angle)
         {
             foreach (objeto objeto in ConjObjects.Values)
             {
-                objeto.ScalarCentro(origin, n);
-            }
-        }
-        public void Rotar(string vertice, float angle)
-        {
-            foreach (objeto objeto in ConjObjects.Values)
-            {
-                objeto.Rotar(vertice, angle);
-            }
-        }
-
-        public void RotarCentro(origen origin, string vertice, float angle)
-        {
-            foreach (objeto objeto in ConjObjects.Values)
-            {
-                objeto.RotarCentro(origin, vertice, angle);
+                objeto.rotate(eje, angle, this.center);
             }
         }
 

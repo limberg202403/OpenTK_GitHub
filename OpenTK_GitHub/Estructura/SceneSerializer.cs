@@ -20,19 +20,9 @@ namespace OpenTK_GitHub.Estructura
         public static stage JsonStage(string fileName)
         {
             string json = File.ReadAllText(fileName);
-            stage escenario = JsonConvert.DeserializeObject<stage>(json);
+            return JsonConvert.DeserializeObject<stage>(json);
 
-            //-------
-            if (escenario == null || escenario.ConjObjects.Count == 0)
-            {
-                Console.WriteLine("Error: El escenario no se cargó correctamente o está vacío.");
-                return escenario;
-            }
-            else
-            {
-                Console.WriteLine("Escenario cargado correctamente con " + escenario.ConjObjects.Count + " objetos.");
-                return escenario;
-            }
+        
         }
     }
 }

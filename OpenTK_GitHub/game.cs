@@ -12,8 +12,7 @@ namespace OpenTK_GitHub
     public class game:GameWindow
     {
 
-        private float yaw = -90f;
-        private float pitch = 0f;
+   
         stage escenario = new stage();
         objeto objeto = new objeto();
         part parte = new part();
@@ -78,97 +77,106 @@ namespace OpenTK_GitHub
         {
 
 
-            //------------------------ ROTACION DEL OBJETO --------------------------------//
+            //------------------------ ROTACION DEL escenario --------------------------------//
             if (Keyboard.GetState().IsKeyDown(Key.X))
             {
-                escenario.getObject("letraT").Rotar("x", 0.8f);
+                escenario.rotate("x", 1.8f);
             }
             if (Keyboard.GetState().IsKeyDown(Key.Y))
             {
-                escenario.getObject("letraT").Rotar("y", 0.8f);
+                escenario.rotate("y", 1.8f);
             }
             if (Keyboard.GetState().IsKeyDown(Key.Z))
             {
-                escenario.getObject("letraT").Rotar("z", 0.8f);
+                escenario.rotate("z", 1.8f);
             }
+         
+            //------------------------ ESCALAR EL ESCENARIO  --------------------------------//
 
-
-            // Capturar entrada del usuario para rotar la cámara
             if (Keyboard.GetState().IsKeyDown(Key.Number1))
             {
-                escenario.Scalar(0.95f); // Reducir escala del escenario
+                escenario.scale(0.95f); 
             }
             if (Keyboard.GetState().IsKeyDown(Key.Number2))
             {
-                escenario.Scalar(1.05f); // Aumentar escala del escenario
+                escenario.scale(1.05f); 
             }
+
+            //------------------------ ESCALAR UNA PARTE  --------------------------------//
+
             if (Keyboard.GetState().IsKeyDown(Key.Number3))
             {
-                escenario.getObject("letraT").getPart("partesCub1").Scalar(0.95f); // Reducir escala del escenario
+                escenario.getObject("letraT").getPart("partesCub").scale(0.95f, new origen()); 
             }
             if (Keyboard.GetState().IsKeyDown(Key.Number4))
             {
-                escenario.getObject("letraT").getPart("partesCub1").Scalar(1.05f); // Aumentar escala del escenario
+                escenario.getObject("letraT").getPart("partesCub").scale(1.05f, new origen()); 
+                                                                            
             }
+
+            //------------------------ TRASLADAR EL ESCENARIO  --------------------------------//
+
             if (Keyboard.GetState().IsKeyDown(Key.A))
             {
-                escenario.getObject("letraT").Trasladar(-0.1f, 0.0f, 0.0f); // Traslación hacia la izquierda
+                escenario.translate("x", -0.1f); 
             }
             if (Keyboard.GetState().IsKeyDown(Key.D))
             {
-                escenario.getObject("letraT").Trasladar(0.1f, 0.0f, 0.0f); // Traslación hacia la derecha
+                escenario.translate("x", 0.1f); 
             }
             if (Keyboard.GetState().IsKeyDown(Key.W))
             {
-                escenario.getObject("letraT").Trasladar(0.0f, 0.1f, 0.0f); // Traslación hacia adelante
+                escenario.translate("y", 0.1f); 
             }
             if (Keyboard.GetState().IsKeyDown(Key.S))
             {
-                escenario.getObject("letraT").Trasladar(0.0f, -0.1f, 0.0f); // Traslación hacia adelante
-            }    
-            
-            //------------------------ ROTAR UNA PARTE --------------------------------//
-            if (Keyboard.GetState().IsKeyDown(Key.C))
-            {
-                escenario.getObject("letraT").getPart("partesCub1").RotarCentro(parte.center, "x", 1.0f); 
+                escenario.translate("y", -0.1f); 
             }
-            if (Keyboard.GetState().IsKeyDown(Key.V))
+
+            //------------------------ ROTAR UNA PARTE --------------------------------//
+            if (Keyboard.GetState().IsKeyDown(Key.C))  
             {
-                escenario.getObject("letraT").getPart("partesCub1").RotarCentro(parte.center, "y", 1.0f);
+                escenario.getObject("letraT").getPart("partesCub").rotate("x", 1.8f, new origen());
+
+            }
+            if (Keyboard.GetState().IsKeyDown(Key.V))   
+            {
+                escenario.getObject("letraT").getPart("partesCub").rotate("y", 1.8f, new origen());
+
+            }
+
+            if (Keyboard.GetState().IsKeyDown(Key.B))
+            {
+                escenario.getObject("letraT").getPart("partesCub").rotate("z", 1.8f, new origen());
+
             }
 
             //------------------------ ROTAR El OBJETO --------------------------------//
             if (Keyboard.GetState().IsKeyDown(Key.R))
             {
-                escenario.getObject("letraT").RotarCentro(new origen(), "x", 1.0f);
+                escenario.getObject("letraT").rotate("x", 1.5f, new origen());
             }
             if (Keyboard.GetState().IsKeyDown(Key.T))
             {
-                escenario.getObject("letraT").RotarCentro(new origen(), "y", 1.0f);
+                escenario.getObject("letraT").rotate("y", 1.5f, new origen());
             }
-            
 
-            if (Keyboard.GetState().IsKeyDown(Key.G))
-            {
-                escenario.RotarCentro(new origen(), "y", 1.0f);
-            }
-            
-
+            //------------------------ TRASLADAR El OBJETO --------------------------------//
             if (Keyboard.GetState().IsKeyDown(Key.I))
             {
-                escenario.getObject("letraT").getPart("partesCub1").Trasladar(0.0f, 0.1f, 0.0f);
+                escenario.getObject("letraT").getPart("partesCub").translate("y", 0.05f);
             }
             if (Keyboard.GetState().IsKeyDown(Key.K))
             {
-                escenario.getObject("letraT").getPart("partesCub1").Trasladar(0.0f, -0.1f, 0.0f);
+                escenario.getObject("letraT").getPart("partesCub").translate("y", -0.05f);
             }
             if (Keyboard.GetState().IsKeyDown(Key.J))
             {
-                escenario.getObject("letraT").getPart("partesCub1").Trasladar(-0.1f, 0.0f, 0.0f);
+                escenario.getObject("letraT").getPart("partesCub").translate("x", -0.05f);
             }
             if (Keyboard.GetState().IsKeyDown(Key.L))
             {
-                escenario.getObject("letraT").getPart("partesCub1").Trasladar(0.1f, 0.0f, 0.0f);
+                escenario.getObject("letraT").getPart("partesCub").translate("x", 0.05f);
             }
 
             base.OnUpdateFrame(e);

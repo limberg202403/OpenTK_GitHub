@@ -14,97 +14,77 @@ namespace OpenTK_GitHub.Entorno
     {
         [JsonProperty("parts")]
         public Dictionary<string, part> Conjpart { get; set; }
-
+        [JsonProperty("centro")]
         public origen center { get; set; }
+        private origen centroEscenario { get; set; }
 
         public objeto()
         {
-            Conjpart = new Dictionary<string, part>();
-            center = new origen(); 
+            this.Conjpart = new Dictionary<string, part>();
+            this.center = new origen(0, 0, 0);
+            this.centroEscenario = new origen(0, 0, 0);
         }
 
-        public objeto(Dictionary<string, part> part, origen centro)
+        public objeto(origen centro, Dictionary<string, part> partes)
         {
-            Conjpart = part;
-            center = centro;
+            this.center = centro;
+            this.Conjpart = partes;
+            this.centroEscenario = new origen(0, 0, 0);
+        }
+     
+        public void addParte(string nombre, part parte)
+        {
+            this.Conjpart.Add(nombre, parte);
+        }
+        public void removeParte(string nombre)
+        {
+            this.Conjpart.Remove(nombre);
+        }
+        public part getPart(String nombre)
+        {
+            return Conjpart[nombre];
         }
 
-        public void addPart(string NamePart, part newPart)
+        public void draw()
         {
-            newPart.center = newPart.center + center;
-            Conjpart.Add(NamePart, newPart);
+            dibujar(new origen(0, 0, 0));
         }
-    
-        public part getPart(string namePart)
+        public void dibujar(origen sceneCentre)
         {
-            if (Conjpart.ContainsKey(namePart))
-            {
-                return Conjpart[namePart];
-            }
-            else return null;
-        }
+            origen centroObjSce = sceneCentre + this.center;
+            foreach (part parte in Conjpart.Values)
+            {            
+                parte.dibujar(centroObjSce);
 
-        public void deletePart(string NamePart)
-        {
-            Conjpart.Remove(NamePart);
-        }
-
-        public void dibujar()
-        {
-            foreach (part part in Conjpart.Values)
-            {
-                part.Trasladar(center.X, center.Y, center.Z);
-                part.dibujar();
-                part.Trasladar(-center.X, -center.Y, -center.Z);
-            }  
-        }
-
-
-        //--------------------  TRANSFORMACIONESS  -----------------------//
-
-        public void Trasladar(float x, float y, float z)
-        {
-            center = new origen(center.X + x, center.Y + y, center.Z + z);
-
-            foreach (part part in Conjpart.Values)
-            {
-                part.Trasladar(x, y, z);
             }
         }
 
-        public void Scalar(float n)
+
+        //-------------------------------- TRANSFORMACIONES   -------------------------------//
+
+        internal void translate(string eje, float translateValue)
         {
-            foreach (part part in Conjpart.Values)
+            foreach (part parte in Conjpart.Values)
             {
-                part.Scalar(n);
+                parte.translate(eje, translateValue);
+            }
+        }
+        public void scale(float scaleValue)
+        {
+            foreach (part parte in Conjpart.Values)
+            {
+                parte.scale(scaleValue, center + centroEscenario);
+            }
+        }
+   
+        public void rotate(string eje, float angle, origen transformacion)
+        {
+            foreach (part parte in Conjpart.Values)
+            {
+                parte.rotate(eje, angle, transformacion);
             }
         }
 
-        public void ScalarCentro(origen origin, float n)
-        {
-            foreach (part part in Conjpart.Values)
-            {
-                part.ScalarCentro(origin, n);
-            }
-        }
-
-        public void Rotar(string vertice, float angle)
-        {
-            foreach (part partes in Conjpart.Values)
-            {
-                partes.Rotar(vertice, angle);
-            }
-        }
-
-        public void RotarCentro(origen origin, string vertice, float angle)
-        {
-
-            foreach (part partes in Conjpart.Values)
-            {
-
-                partes.RotarCentro(origin, vertice, angle);
-
-            }
-        }
+     
     }
 }

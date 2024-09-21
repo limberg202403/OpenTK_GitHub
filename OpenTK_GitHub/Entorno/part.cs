@@ -16,97 +16,72 @@ namespace OpenTK_GitHub.Entorno
     class part
     {
         [JsonProperty("polygons")]
-
         public Dictionary<string, polygon> ConjPoligonos { get; set; }
-
-        public origen center { get; set; }
+        [JsonProperty("centro")]
+        public origen center { get; set; }   
 
         public part()
         {
-            ConjPoligonos = new Dictionary<string, polygon>();
-            center = new origen();
+            this.ConjPoligonos = new Dictionary<string, polygon>();
+            this.center = new origen(0, 0, 0);
         }
 
-        public part(Dictionary<string, polygon> poligonos, origen center)
+        public part(origen centro, Dictionary<string, polygon> poligonos)
         {
-            ConjPoligonos = poligonos;
-            this.center = center;
-        }
-
-        public void addPolygon(string namePolygon, polygon newPolygon)
+            this.ConjPoligonos = poligonos;
+            this.center = centro;
+        }   
+     
+        public void addPoligono(string name, polygon poligono)
         {
-            ConjPoligonos.Add(namePolygon, newPolygon);
+            ConjPoligonos.Add(name, poligono);
         }
-
-        public polygon getPolygon(string namePolygon)
+        public void removePoligono(string name)
         {
-            if (ConjPoligonos.ContainsKey(namePolygon))
-            {
-                return ConjPoligonos[namePolygon];
-            }
-            else return null;
+            ConjPoligonos.Remove(name);
         }
-
-        public void deletePolygon(string namePolygon)
+        public polygon getPolygon(string nombre)
         {
-            ConjPoligonos.Remove(namePolygon);
+            return ConjPoligonos[nombre];
         }
-
-
         public void dibujar()
+        {
+            dibujar(new origen(0, 0, 0));
+        }
+        public void dibujar(origen centroUp)
+        {
+            origen centroResto = center + centroUp;
+            foreach (polygon poligono in ConjPoligonos.Values)
+            {             
+                poligono.dibujar(centroResto);
+            }
+        }
+
+        //-------------------------------- TRANSFORMACIONES   -------------------------------//
+
+        internal void translate(string eje, float translateValue)
         {
             foreach (polygon poligono in ConjPoligonos.Values)
             {
-                poligono.Trasladar(center.X, center.Y, center.Z);
-                poligono.dibujar();
-                poligono.Trasladar(-center.X, -center.Y, -center.Z);
+                poligono.translate(eje, translateValue);
             }
         }
-
-
-        //---------------------------  TRANSFORMACIONESS  ----------------------------//
-
-        public void Trasladar(float x, float y, float z)
+      
+        public void scale(float scaleValue, origen transformacion)
         {
-            foreach (polygon poligonos in ConjPoligonos.Values)
+            foreach (polygon poligono in ConjPoligonos.Values)
             {
-                poligonos.Trasladar(x, y, z);
+                poligono.scale(scaleValue, transformacion);
             }
         }
-
-        public void Scalar(float n)
+     
+        public void rotate(string eje, float angle, origen transformacion)
         {
-            foreach (polygon poligonos in ConjPoligonos.Values)
+            foreach (polygon poligono in ConjPoligonos.Values)
             {
-                poligonos.Scalar(n);
+                poligono.rotate(eje, angle, transformacion);
             }
         }
-
-        public void ScalarCentro(origen origin, float n)
-        {
-            foreach (polygon poligonos in ConjPoligonos.Values)
-            {
-                poligonos.ScalarCentro(origin, n);
-            }
-        }
-
-        public void Rotar(string vertice, float angle)
-        {
-            foreach (polygon poligonos in ConjPoligonos.Values)
-
-            {
-                poligonos.Rotar(vertice, angle);
-            }
-        }
-
-        public void RotarCentro(origen origin, string vertice, float angle)
-        {
-            foreach (polygon poligonos in ConjPoligonos.Values)
-            {
-                poligonos.RotarCentro(origin, vertice, angle);
-            }
-        }
-
 
     }    
 }

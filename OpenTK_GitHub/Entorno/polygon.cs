@@ -13,101 +13,92 @@ namespace OpenTK_GitHub.Entorno
         public List<origen> ConjVertices { get; set; }
         public string name { get; set; }
         public Color4 color { get; set; }
-
-        public origen center { get; set; }
-
-        private Matrix4 Model;
-        private Matrix4 ModelMaxtrix;
+        [JsonProperty("centro")]
+        public origen center { get; set; }    
+        public matrizTransformacion matriz { get; set; }
 
         public polygon()
         {
             ConjVertices = new List<origen>();
+            this.center = new origen(0, 0, 0);
+            this.matriz = new matrizTransformacion(center);
             color = Color4.Gray;
-            name = "";
-            center = new origen();
-            Model = Matrix4.Identity;
-            ModelMaxtrix = Matrix4.Identity;
-
         }
-
-        public polygon(List<origen> Vertices, Color4 color)
+        public polygon(Color4 color)
         {
-            ConjVertices = Vertices;
+            ConjVertices = new List<origen>();
             this.color = color;
-            center = new origen();
-
-            name = "";
-
-            Model = Matrix4.Identity;
-            ModelMaxtrix = Matrix4.Identity;
+            this.center = new origen(0, 0, 0);
+            this.matriz = new matrizTransformacion(center);
         }
-
-        public void newVertice(origen vertice)
-        {
-            ConjVertices.Add(vertice);
-        }
-
     
+        public void addVertice(float x, float y, float z)
+        {
+            ConjVertices.Add(new origen(x, y, z));
+        }
+        public void removeVertice(int index)
+        {
+            ConjVertices.RemoveAt(index);
+        }
+      
+
         public void dibujar()
         {
+            dibujar(new origen(0, 0, 0));
+        }
+
+        public void dibujar(origen centros)
+        {
+            origen centroResto = centros + center;
             GL.Color4(color);
             GL.Begin(PrimitiveType.Polygon);
-
-            foreach (origen vertice in ConjVertices)
+            foreach (origen v in ConjVertices)
             {
-                //trasladarDeVuelta
-                Vector4 puntoTransformado = Vector4.Transform(new Vector4(vertice.X, vertice.Y, vertice.Z, 1.0f), Model);
-                GL.Vertex3(puntoTransformado.X, puntoTransformado.Y, puntoTransformado.Z);
-                
+                origen vertexToDraw = v;
+                vertexToDraw *= matriz.GetMatrix();
+                GL.Vertex3(vertexToDraw.X + centroResto.X, vertexToDraw.Y + centroResto.Y, vertexToDraw.Z + centroResto.Z);
             }
-            GL.End();           
+            GL.End();
         }
 
+        //-------------------------------- TRANSFORMACIONES   -------------------------------//
 
-        //-----------------------  TRANSFORAMCIONES   -----------------------//
-
-        public void Trasladar(float x, float y, float z)
+        public void translate(string axis, float transaleValue)
         {
-            Model = Matrix4.Mult(Model, Matrix4.CreateTranslation(x, y, z));
-            ModelMaxtrix = Matrix4.Mult(Matrix4.CreateTranslation(-x, -y, -z), ModelMaxtrix);
+            switch (axis)
+            {
+                case "x":
+                    this.matriz.SetTraslacion(transaleValue, 0, 0);
+                    break;
+                case "y":
+                    this.matriz.SetTraslacion(0, transaleValue, 0);
+                    break;
+                case "z":
+                    this.matriz.SetTraslacion(0, 0, transaleValue);
+                    break;
+            }
         }
-
-        public void Scalar(float n)
+        public void scale(float scaleValue, origen transformacion)
         {
-            Model = Matrix4.Mult(Model, Matrix4.CreateScale(n));
-            ModelMaxtrix = Matrix4.Mult(Matrix4.CreateScale(1.0f / n), ModelMaxtrix);
+            this.matriz.SetEscalacion(scaleValue, scaleValue, scaleValue);
         }
-
-        public void ScalarCentro(origen center, float n)
+       
+        public void rotate(string axis, float angle, origen transformacion)
         {
-            Trasladar(-center.X, -center.Y, -center.Z);
-            Scalar(n);
-            Trasladar(center.X, center.Y, center.Z);
-        }
-        public void Rotar(string axis, float angle)
-        {
-            float radians = MathHelper.DegreesToRadians(angle);
-            Matrix4 rotationMatrix = Matrix4.Identity;
 
-            if (axis == "x")
-                rotationMatrix = Matrix4.CreateRotationX(radians);
-            else if (axis == "y")
-                rotationMatrix = Matrix4.CreateRotationY(radians);
-            else if (axis == "z")
-                rotationMatrix = Matrix4.CreateRotationZ(radians);
-
-            Model = Matrix4.Mult(Model, rotationMatrix);
-            ModelMaxtrix = Matrix4.Mult(rotationMatrix, ModelMaxtrix);
-        }
-
- 
-        public void RotarCentro(origen center, string axis, float angle)
-        {
-            Trasladar(-center.X, -center.Y, -center.Z);
-            Rotar(axis, angle);
-            Trasladar(center.X, center.Y, center.Z);
-
-        }
+            switch (axis)
+            {
+                case "x":
+                    this.matriz.SetRotacion(angle, 0, 0);
+                    break;
+                case "y":
+                    this.matriz.SetRotacion(0, angle, 0);
+                    break;
+                case "z":
+                    this.matriz.SetRotacion(0, 0, angle);
+                    break;
+            }
+        }            
     }
 
 }
