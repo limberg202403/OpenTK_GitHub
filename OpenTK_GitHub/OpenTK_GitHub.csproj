@@ -75,17 +75,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entorno\IDibujar.cs" />
-    <Compile Include="Entorno\objeto.cs" />
-    <Compile Include="Entorno\part.cs" />
-    <Compile Include="Entorno\polygon.cs" />
-    <Compile Include="Entorno\stage.cs" />
-    <Compile Include="Estructura\origen.cs" />
-    <Compile Include="Estructura\SceneSerializer.cs" />
+    <Compile Include="Entorno\Escena.cs" />
+    <Compile Include="Entorno\Objeto.cs" />
+    <Compile Include="Entorno\Parte.cs" />
+    <Compile Include="Entorno\Poligono.cs" />
+    <Compile Include="Estructura\Acciones.cs" />
+    <Compile Include="Estructura\Controller.cs" />
+    <Compile Include="Estructura\Libreto.cs" />
+    <Compile Include="Matrix.cs" />
+    <Compile Include="origen.cs" />
+    <Compile Include="Estructura\Transformaciones.cs" />
     <Compile Include="game.cs" />
-    <Compile Include="matrizTransformacion.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SceneSerializer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

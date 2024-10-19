@@ -4,21 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
-
-
-
 namespace OpenTK_GitHub
 {
     class Program
     {
-        [STAThread]
         static void Main(string[] args)
         {
-
-            game figure = new game("T", 1000, 1000);
-            figure.Run();
-            
+            using (game game = new game(800, 600, "LetraT"))
+            {
+                game.Run(60.0);
+            }
         }
     }
 }
