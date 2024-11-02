@@ -180,9 +180,9 @@ namespace OpenTK_GitHub.Entorno
             }
         }
 
-        public void limpiar()
+        public void clear()
         {
-            this.matriz.Limpiar();
+            this.matriz.clear();
         }
     }
 

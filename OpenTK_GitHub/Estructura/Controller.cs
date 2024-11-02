@@ -12,10 +12,12 @@ namespace OpenTK_GitHub.Estructura
     {
         Libreto libreto;      
         public int tiempoInicial;
+        bool ejecutando = true;
         public Controller(Libreto libreto)
         {
             this.libreto = libreto;
         }
+
 
         public void Execute()
         {
@@ -23,42 +25,48 @@ namespace OpenTK_GitHub.Estructura
             int timeFinish = 60000;
             List<Acciones> listaDeAcciones = libreto.ListaDeAcciones;
 
-            while (true)
+            var todasLasTransformaciones = listaDeAcciones.SelectMany(accion =>
+                accion.listasDeEstados.Select(transformacion => new
+                {
+                    Accion = accion,
+                    Transformacion = transformacion
+                })).ToList();
+
+            while (ejecutando)
             {
                 int tiempoTranscurrido = Environment.TickCount - tiempoInicial;
 
                 if (tiempoTranscurrido >= timeFinish)
                 {
-                    tiempoInicial = Environment.TickCount;
+                   
+                    ejecutando = false;  
+                    break;
                 }
-                            
-                foreach (Acciones accion in listaDeAcciones)
-                {
-                    int tiempoActual = Environment.TickCount - tiempoInicial;
-                    Objeto objeto = libreto.Escena.buscarObjeto(accion.keyObjeto);
-                    Partes parte = null;
-                    if (accion.keyParte != "")
-                    {
-                        parte = objeto.buscarPartes(accion.keyParte);
-                    }
-                    List<Transformacion> listaDeTransformaciones = accion.listasDeEstados;
-                    foreach (Transformacion transformacion in listaDeTransformaciones)
-                    {
-                        if (tiempoActual >= transformacion.tiempoInicio && tiempoActual <= (transformacion.tiempoInicio + transformacion.duracion))
-                        {
-                            if (transformacion.lastExecutionTime == 0 || (Environment.TickCount - transformacion.lastExecutionTime) >= 40)
-                            {
 
-                                AplicarTransformacion(objeto, transformacion, parte, accion);
-                                transformacion.lastExecutionTime = Environment.TickCount;
-                            }
+                int tiempoActual = Environment.TickCount - tiempoInicial;
+
+                foreach (var item in todasLasTransformaciones)
+                {
+                    var accion = item.Accion;
+                    var transformacion = item.Transformacion;
+
+                    if (tiempoActual >= transformacion.tiempoInicio && tiempoActual <= (transformacion.tiempoInicio + transformacion.duracion))
+                    {
+                        if (transformacion.lastExecutionTime == 0 || (Environment.TickCount - transformacion.lastExecutionTime) >= 40)
+                        {
+                            Objeto objeto = libreto.Escena.buscarObjeto(accion.keyObjeto);
+                            Partes parte = !string.IsNullOrEmpty(accion.keyParte) ? objeto.buscarPartes(accion.keyParte) : null;
+
+                            AplicarTransformacion(objeto, transformacion, parte, accion);
+                            transformacion.lastExecutionTime = Environment.TickCount;
                         }
                     }
                 }
             }
         }
 
-      
+
+
         private void AplicarTransformacion(Objeto objeto, Transformacion transformacion, Partes parte, Acciones accion)
         {
             float diferencial = (float)transformacion.diferencial;//grado de cambio que se aplicara a la transf
@@ -93,6 +101,20 @@ namespace OpenTK_GitHub.Estructura
                 }
             }
 
+        }
+
+      
+
+        public void ReiniciarAnimacion()
+        {
+            ejecutando = false; 
+
+            Task.Delay(50).Wait();
+
+            tiempoInicial = Environment.TickCount;
+            ejecutando = true;       
+            libreto.Escena.clear();
+            Execute();
         }
     }
 }

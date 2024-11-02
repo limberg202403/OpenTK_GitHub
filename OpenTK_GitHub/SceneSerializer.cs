@@ -11,9 +11,23 @@ namespace OpenTK_GitHub
     {
         public static void SaveStage(string nombreArchivo, Escena escenario)
         {
-            string json = JsonConvert.SerializeObject(escenario);
-            File.WriteAllText(nombreArchivo, json);
+            JsonSerializerSettings settings = new JsonSerializerSettings
+            {
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                Formatting = Formatting.Indented
+            };
+
+            using (StreamWriter sw = new StreamWriter(nombreArchivo))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                JsonSerializer serializer = JsonSerializer.Create(settings);
+                serializer.Serialize(writer, escenario);
+            }
+
+            Console.WriteLine($"Archivo JSON generado con éxito: {nombreArchivo}");
         }
+
+
 
         public static Escena JsonStage(string fileName)
         {
@@ -21,7 +35,15 @@ namespace OpenTK_GitHub
             return JsonConvert.DeserializeObject<Escena>(json);
 
         }
+        //public static void SaveStage1(string nombreArchivo, Escena escenario)
+        //{
+        //    string json = JsonSerializer.Serialize(escenario);
 
+        //    // Guardar en un archivo JSON
+        //    File.WriteAllText(nombreArchivo, json);
+
+        //    Console.WriteLine("Archivo JSON generado con éxito: persona.json");
+        //}
 
         public static void Save(string path, object objectType)
         {

@@ -66,7 +66,7 @@ namespace ProgramacionGrafica
             SetTransformation();
         }
 
-        public void Limpiar()
+        public void clear()
         {
             this.rotacion = Matrix4.Identity;
             this.traslacion = Matrix4.Identity;

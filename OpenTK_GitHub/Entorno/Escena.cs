@@ -100,11 +100,11 @@ namespace OpenTK_GitHub.Entorno
             }
         }
 
-        public void limpiar()
+        public void clear()
         {
             foreach (Objeto objeto in objetos.Values)
             {
-                objeto.limpiar();
+                objeto.clear();
             }
         }
     }

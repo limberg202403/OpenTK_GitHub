@@ -15,6 +15,8 @@ namespace OpenTK_GitHub.Entorno
         public origen centro { get; set; }
         private origen centroEscenario { get; set; }
 
+
+
         public Objeto()
         {
             this.partes = new Dictionary<string, Partes>();
@@ -130,11 +132,11 @@ namespace OpenTK_GitHub.Entorno
             }
         }
 
-        public void limpiar()
+        public void clear()
         {
             foreach (Partes parte in partes.Values)
             {
-                parte.limpiar();
+                parte.clear();
             }
         }
     }

@@ -17,9 +17,9 @@ namespace OpenTK_GitHub.Estructura
         public long segundos { get; set; }
         public long lastExecutionTime { get; set; }
 
-        public Transformacion(string transformacion, int ValorATransformar, string eje, long duracion, long tiempoInicio)
+        public Transformacion(string Tipotransformacion, int ValorATransformar, string eje, long duracion, long tiempoInicio)
         {
-            this.transformacion = transformacion;
+            this.transformacion = Tipotransformacion;
             CantidadATransformar = ValorATransformar;
             this.eje = eje;
             this.duracion = duracion;

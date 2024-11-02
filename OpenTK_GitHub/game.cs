@@ -20,6 +20,7 @@ namespace OpenTK_GitHub
     {
         Escena escenario;
         Escena animacion;
+        Objeto objeto;
         public Controller controlador;
         private Libreto libreto;
         Thread ejecutar;
@@ -395,63 +396,63 @@ namespace OpenTK_GitHub
             Poligono pierna = new Poligono(colorPierna, new origen(-1, -2.0f, 2.0f)); // Posición relativa de la pierna
 
 
-            pierna.addVertice(-2f, 1, 1);
-            pierna.addVertice(2f, 1, 1);
-            pierna.addVertice(2f, -4, 1);
-            pierna.addVertice(-2f, -4, 1);
+            pierna.addVertice(-2f, -7, 1);
+            pierna.addVertice(2f, -7, 1);
+            pierna.addVertice(2f, -12, 1);
+            pierna.addVertice(-2f, -12, 1);
 
-            pierna.addVertice(-2f, 1, -1);
-            pierna.addVertice(2f, 1, -1);
-            pierna.addVertice(2f, -4, -1);
-            pierna.addVertice(-2f, -4, -1);
+            pierna.addVertice(-2f, -7, -1);
+            pierna.addVertice(2f, -7, -1);
+            pierna.addVertice(2f, -12, -1);
+            pierna.addVertice(-2f, -12, -1);
 
-            pierna.addVertice(-2f, -4, 1);
-            pierna.addVertice(2f, -4, 1);
-            pierna.addVertice(2f, -6, 1);
-            pierna.addVertice(-2f, -6, 1);
+            pierna.addVertice(-2f, -12, 1);
+            pierna.addVertice(2f, -12, 1);
+            pierna.addVertice(2f, -14, 1);
+            pierna.addVertice(-2f, -14, 1);
 
-            pierna.addVertice(-2f, -4, -1);
-            pierna.addVertice(2f, -4, -1);
-            pierna.addVertice(2f, -6, -1);
-            pierna.addVertice(-2f, -6, -1);
+            pierna.addVertice(-2f, -12, -1);
+            pierna.addVertice(2f, -12, -1);
+            pierna.addVertice(2f, -14, -1);
+            pierna.addVertice(-2f, -14, -1);
 
             // Conectar los vértices para crear las caras
 
             // Parte delantera
-            pierna.addVertice(-2f, 1, 1);
-            pierna.addVertice(2f, 1, 1);
-            pierna.addVertice(2f, -4, 1);
-            pierna.addVertice(-2f, -4, 1);
+            pierna.addVertice(-2f, -7, 1);
+            pierna.addVertice(2f, -7, 1);
+            pierna.addVertice(2f, -12, 1);
+            pierna.addVertice(-2f, -12, 1);
 
             // Parte trasera
-            pierna.addVertice(-2f, 1, -1);
-            pierna.addVertice(-2f, -4, -1);
-            pierna.addVertice(2f, -4, -1);
-            pierna.addVertice(2f, 1, -1);
+            pierna.addVertice(-2f, -7, -1);
+            pierna.addVertice(-2f, -12, -1);
+            pierna.addVertice(2f, -12, -1);
+            pierna.addVertice(2f, -7, -1);
 
             // Parte izquierda
-            pierna.addVertice(-2f, 1, 1);
-            pierna.addVertice(-2f, 1, -1);
-            pierna.addVertice(-2f, -4, -1);
-            pierna.addVertice(-2f, -4, 1);
+            pierna.addVertice(-2f, -7, 1);
+            pierna.addVertice(-2f, -7, -1);
+            pierna.addVertice(-2f, -12, -1);
+            pierna.addVertice(-2f, -12, 1);
 
             // Parte derecha
-            pierna.addVertice(2f, 1, 1);
-            pierna.addVertice(2f, 1, -1);
-            pierna.addVertice(2f, -4, -1);
-            pierna.addVertice(2f, -4, 1);
+            pierna.addVertice(2f, -7, 1);
+            pierna.addVertice(2f, -7, -1);
+            pierna.addVertice(2f, -12, -1);
+            pierna.addVertice(2f, -12, 1);
 
             // Parte inferior (cerca del pie)
-            pierna.addVertice(-2f, -6, 1);
-            pierna.addVertice(2f, -6, 1);
-            pierna.addVertice(2f, -6, -1);
-            pierna.addVertice(-2f, -6, -1);
+            pierna.addVertice(-2f, -14, 1);
+            pierna.addVertice(2f, -14, 1);
+            pierna.addVertice(2f, -14, -1);
+            pierna.addVertice(-2f, -14, -1);
 
             // Añadir la pierna al objeto persona
 
             Dictionary<string, Poligono> polygonsPierna = new Dictionary<string, Poligono>();
             polygonsPierna.Add("Pierna", pierna);
-            Partes partePierna = new Partes(new origen(0, -8, 0), polygonsPierna);
+            Partes partePierna = new Partes(new origen(0, 0, 0), polygonsPierna);
 
             //_-----------------------------    ---------------------------------
 
@@ -462,61 +463,61 @@ namespace OpenTK_GitHub
 
             // Vértices de la pierna (rectángulo en 3D)
 
-            pierna1.addVertice(-1.7f, 1, 1);
-            pierna1.addVertice(1.7f, 1, 1);
-            pierna1.addVertice(1.7f, -4, 1);
-            pierna1.addVertice(-1.7f, -4, 1);
+            pierna1.addVertice(-1.7f, -7, 1);
+            pierna1.addVertice(1.7f, -7, 1);
+            pierna1.addVertice(1.7f, -12, 1);
+            pierna1.addVertice(-1.7f, -12, 1);
 
-            pierna1.addVertice(-1.7f, 1, -1);
-            pierna1.addVertice(1.7f, 1, -1);
-            pierna1.addVertice(1.7f, -4, -1);
-            pierna1.addVertice(-1.7f, -4, -1);
+            pierna1.addVertice(-1.7f, -7, -1);
+            pierna1.addVertice(1.7f, -7, -1);
+            pierna1.addVertice(1.7f, -12, -1);
+            pierna1.addVertice(-1.7f, -12, -1);
 
-            pierna1.addVertice(-1.7f, -4, 1);
-            pierna1.addVertice(1.7f, -4, 1);
-            pierna1.addVertice(1.7f, -6, 1);
-            pierna1.addVertice(-1.7f, -6, 1);
+            pierna1.addVertice(-1.7f, -12, 1);
+            pierna1.addVertice(1.7f, -12, 1);
+            pierna1.addVertice(1.7f, -14, 1);
+            pierna1.addVertice(-1.7f, -14, 1);
 
-            pierna1.addVertice(-1.7f, -4, -1);
-            pierna1.addVertice(1.7f, -4, -1);
-            pierna1.addVertice(1.7f, -6, -1);
-            pierna1.addVertice(-1.7f, -6, -1);
+            pierna1.addVertice(-1.7f, -12, -1);
+            pierna1.addVertice(1.7f, -12, -1);
+            pierna1.addVertice(1.7f, -14, -1);
+            pierna1.addVertice(-1.7f, -14, -1);
 
             // Conectar los vértices para crear las caras
 
             // Parte delantera
-            pierna1.addVertice(-1.7f, 1, 1);
-            pierna1.addVertice(1.7f, 1, 1);
-            pierna1.addVertice(1.7f, -4, 1);
-            pierna1.addVertice(-1.7f, -4, 1);
+            pierna1.addVertice(-1.7f, -7, 1);
+            pierna1.addVertice(1.7f, -7, 1);
+            pierna1.addVertice(1.7f, -12, 1);
+            pierna1.addVertice(-1.7f, -12, 1);
 
             // Parte trasera
-            pierna1.addVertice(-1.7f, 1, -1);
-            pierna1.addVertice(-1.7f, -4, -1);
-            pierna1.addVertice(1.7f, -4, -1);
-            pierna1.addVertice(1.7f, 1, -1);
+            pierna1.addVertice(-1.7f, -7, -1);
+            pierna1.addVertice(-1.7f, -12, -1);
+            pierna1.addVertice(1.7f, -12, -1);
+            pierna1.addVertice(1.7f, -7, -1);
 
             // Parte izquierda
-            pierna1.addVertice(-1.7f, 1, 1);
-            pierna1.addVertice(-1.7f, 1, -1);
-            pierna1.addVertice(-1.7f, -4, -1);
-            pierna1.addVertice(-1.7f, -4, 1);
+            pierna1.addVertice(-1.7f, -7, 1);
+            pierna1.addVertice(-1.7f, -7, -1);
+            pierna1.addVertice(-1.7f, -12, -1);
+            pierna1.addVertice(-1.7f, -12, 1);
 
             // Parte derecha
-            pierna1.addVertice(1.7f, 1, 1);
-            pierna1.addVertice(1.7f, 1, -1);
-            pierna1.addVertice(1.7f, -4, -1);
-            pierna1.addVertice(1.7f, -4, 1);
+            pierna1.addVertice(1.7f, -7, 1);
+            pierna1.addVertice(1.7f, -7, -1);
+            pierna1.addVertice(1.7f, -12, -1);
+            pierna1.addVertice(1.7f, -12, 1);
 
             // Parte inferior (cerca del pie)
-            pierna1.addVertice(-1.7f, -6, 1);
-            pierna1.addVertice(1.7f, -6, 1);
-            pierna1.addVertice(1.7f, -6, -1);
-            pierna1.addVertice(-1.7f, -6, -1);
+            pierna1.addVertice(-1.7f, -14, 1);
+            pierna1.addVertice(1.7f, -14, 1);
+            pierna1.addVertice(1.7f, -14, -1);
+            pierna1.addVertice(-1.7f, -14, -1);
 
             Dictionary<string, Poligono> polygonsPierna1 = new Dictionary<string, Poligono>();
             polygonsPierna1.Add("Pierna1", pierna1);
-            Partes partePierna1 = new Partes(new origen(0, -8, 0), polygonsPierna1);
+            Partes partePierna1 = new Partes(new origen(0, 0, 0), polygonsPierna1);
 
             //_----------------------------- PIERNA INFERIOR---------------------------------
 
@@ -691,65 +692,79 @@ namespace OpenTK_GitHub
             //--------------------------------------------------------
 
 
-            Dictionary<string, Partes> ParteHumano = new Dictionary<string, Partes>();
-            ParteHumano.Add("cabeza", parteCabeza);
-            ParteHumano.Add("cuello", parteCuello);
-            ParteHumano.Add("Torso", parteTorso);
-            ParteHumano.Add("brazo", parteBrazo);
-            ParteHumano.Add("brazo1", parteBrazo1);
-            ParteHumano.Add("antebrazo", parteAntebrazo);
-            ParteHumano.Add("antebrazo1", parteAntebrazo1);
-            ParteHumano.Add("pierna", partePierna);
-            ParteHumano.Add("pierna1", partePierna1);
-            ParteHumano.Add("InferiorPierna", parteInferiorP);
-            ParteHumano.Add("InferiorPierna1", parteInferiorP1);
+            Dictionary<string, Partes> Partepersona = new Dictionary<string, Partes>();
+            Partepersona.Add("cabeza", parteCabeza);
+            Partepersona.Add("cuello", parteCuello);
+            Partepersona.Add("Torso", parteTorso);
+            Partepersona.Add("brazo", parteBrazo);
+            Partepersona.Add("brazo1", parteBrazo1);
+            Partepersona.Add("antebrazo", parteAntebrazo);
+            Partepersona.Add("antebrazo1", parteAntebrazo1);
+            Partepersona.Add("pierna", partePierna);
+            Partepersona.Add("pierna1", partePierna1);
+            Partepersona.Add("InferiorPierna", parteInferiorP);
+            Partepersona.Add("InferiorPierna1", parteInferiorP1);
             //-------------------
 
             Dictionary<string, Partes> Partepelot = new Dictionary<string, Partes>();
             Partepelot.Add("pelota", partePelota);
 
 
-            Objeto humano = new Objeto(new origen(42, 10, 0), ParteHumano);
+            Objeto persona = new Objeto(new origen(42, 10, 0), Partepersona);
 
             Objeto balon = new Objeto(new origen(0, 0, 0), Partepelot);
 
-
-
-            Color colorRampa = Color.FromArgb(78, 128, 147);
-            Poligono rampaTecho = new Poligono(colorRampa, new origen(-27, -7, 0));
-            rampaTecho.addVertice(9, 2, 5);
-            rampaTecho.addVertice(9, 2, -5);
-            rampaTecho.addVertice(-9, -2, -5);
-            rampaTecho.addVertice(-9, -2, 5);
-
-
+          
             ///- pared y repoisa -----------------------------------------------------------
 
 
-            Dictionary<string, Objeto> objetosCuarto = new Dictionary<string, Objeto>();
-            objetosCuarto.Add("humano", humano);
-            objetosCuarto.Add("balon", balon);
+            Dictionary<string, Objeto> objetosAnimacion = new Dictionary<string, Objeto>();
+            objetosAnimacion.Add("persona", persona);
+            objetosAnimacion.Add("balon", balon);
 
-            animacion = new Escena(new origen(0, 0, 0), objetosCuarto);
+            animacion = new Escena(new origen(0, 0, 0), objetosAnimacion);
+
+
 
             //------------------------- animacion
             List<Transformacion> listaDeConversiones = new List<Transformacion>();
             List<Transformacion> listaDeConversionesP = new List<Transformacion>();
-            List<Transformacion> listaDeConversionesBrazo = new List<Transformacion>();
 
             Transformacion accion = new Transformacion("Traslacion", -20, "x", 2000, 0);
             Transformacion accion1 = new Transformacion("Traslacion", -7, "x", 1000, 2000);
             Transformacion accion11 = new Transformacion("Traslacion", -3, "x", 1000, 3000);
-          
+
 
             //Transformacion accion13 = new Transformacion("Traslacion", 7, "y", 1000, 3000);
 
-            // brazo y antebrazo
-            Transformacion brazoA = new Transformacion("Rotacion", -20, "z", 1000, 4000);
-            //Transformacion brazoA1 = new Transformacion("Rotacion", -30, "z", 1000, 5000);
 
-            Transformacion antebrazoA = new Transformacion("Rotacion", 20, "z", 1000, 5000);
-            //Transformacion antebrazoA1 = new Transformacion("Rotacion", 30, "z", 1000, 7000);
+
+            //movimiento brazo al saltar
+            Transformacion brazoDERSAdel2 = new Transformacion("Rotacion", -70, "z", 1000, 4000);
+            Transformacion brazoIZQSAdel2 = new Transformacion("Rotacion", -65, "z", 1000, 4000);
+            Transformacion brazoDERSAtras2 = new Transformacion("Rotacion", 70, "z", 1000, 5000);
+            Transformacion brazoIZQSAtras2 = new Transformacion("Rotacion", 65, "z", 1000, 5000);
+            //movimiento antebrazo al saltar
+            Transformacion antebrazoDERSAdel2 = new Transformacion("Rotacion", -70, "z", 1000, 4000);
+            Transformacion antebrazoIZQSAdel2 = new Transformacion("Rotacion", -65, "z", 1000, 4000);
+            Transformacion antebrazoDERSAtras2 = new Transformacion("Rotacion", 70, "z", 1000, 5000);
+            Transformacion antebrazoIZQSAtras2 = new Transformacion("Rotacion", 65, "z", 1000, 5000);
+
+
+
+            //giro de brazo al patear el balon
+            Transformacion brazoDERSAdel = new Transformacion("Rotacion", -50, "z", 1000, 6000);
+            Transformacion brazoIZQSAdel = new Transformacion("Rotacion", 50, "z", 1000, 6000);
+            Transformacion brazoDERSAtras = new Transformacion("Rotacion", 50, "z", 1000, 7000);
+            Transformacion brazoIZQSAtras = new Transformacion("Rotacion", -50, "z", 1000, 7000);
+
+          
+
+            //giro de antebrazo al patear el balon
+            Transformacion antebrazoDERSAdel = new Transformacion("Rotacion", -50, "z", 1000, 6000);
+            Transformacion antebrazoIZQSAdel = new Transformacion("Rotacion", 50, "z", 1000, 6000);
+            Transformacion antebrazoDERSAtras = new Transformacion("Rotacion", 50, "z", 1000, 7000);
+            Transformacion antebrazoIZQSAtras = new Transformacion("Rotacion", -50, "z", 1000, 7000);
 
 
             //saltar
@@ -768,11 +783,12 @@ namespace OpenTK_GitHub
             Transformacion accion03P = new Transformacion("Traslacion", 20, "y", 2000, 10200);
             Transformacion accion04P = new Transformacion("Traslacion", -20, "x", 2000, 10200);
 
-            ///_-------------------------------------
+
+            ///-------------------------------------
 
 
-            Transformacion patearElBalon = new Transformacion("Rotacion", -20, "z", 1000, 6000);
-            Transformacion patearElBalon1 = new Transformacion("Rotacion", 20, "z", 1000, 7000);
+            Transformacion patearElBalon = new Transformacion("Rotacion", -10, "z", 1000, 6000);
+            Transformacion patearElBalon1 = new Transformacion("Rotacion", 10, "z", 1000, 7000);
 
             Transformacion patearElBalonInf = new Transformacion("Rotacion", -10, "z", 1000, 6000);
             Transformacion patearElBalonInf1 = new Transformacion("Rotacion", 10, "z", 1000, 7000);
@@ -782,49 +798,112 @@ namespace OpenTK_GitHub
             Transformacion balanceoAbajo = new Transformacion("Traslacion", -2, "y", 1000, 500);
 
 
-            // Brazo derecho
-            Transformacion rotacionBrazoDerechoAdelante = new Transformacion("Rotacion", 15, "z", 1000, 0);
-            Transformacion rotacionBrazoDerechoAtras = new Transformacion("Rotacion", -15, "z", 1000, 1000);
+            //// Brazo derecho
+            //Transformacion rotacionBrazoDerechoAdelante = new Transformacion("Rotacion", -15, "z", 1000, 0);
+            //Transformacion rotacionBrazoDerechoAtras = new Transformacion("Rotacion", 15, "z", 1000, 1000);
 
-            // Brazo izquierdo
-            Transformacion rotacionBrazoIzquierdoAdelante = new Transformacion("Rotacion", 15, "z", 1000, 0);
-            Transformacion rotacionBrazoIzquierdoAtras = new Transformacion("Rotacion", -15, "z", 1000, 1000);
+            //// Brazo izquierdo
+            //Transformacion rotacionBrazoIzquierdoAdelante = new Transformacion("Rotacion", -15, "z", 1000, 0);
+            //Transformacion rotacionBrazoIzquierdoAtras = new Transformacion("Rotacion", 15, "z", 1000, 1000);
 
 
-            // Transformaciones de las piernas
-            Transformacion rotacionPiernaDerechaAdelante = new Transformacion("Rotacion", -20, "z", 1000, 0);
-            Transformacion rotacionPiernaDerechaAtras = new Transformacion("Rotacion", 20, "z", 1000, 2000);
-            Transformacion rotacionPiernaIzquierdaAdelante = new Transformacion("Rotacion", 20, "z", 1000, 1000);
-            Transformacion rotacionPiernaIzquierdaAtras = new Transformacion("Rotacion", -20, "z", 1000, 3000);
+
+            // Transformaciones de las piernas izq y der
+            Transformacion rotacionBrazoDerechaAdelante = new Transformacion("Rotacion", -10, "z", 1000, 0);
+            Transformacion rotacionBrazoIzquierdaAdelante = new Transformacion("Rotacion", 10, "z", 1000, 1000);
+            Transformacion rotacionBrazoDerechaAtras = new Transformacion("Rotacion", 12, "z", 1000, 2000);
+            Transformacion rotacionBrazoIzquierdaAtras = new Transformacion("Rotacion", -10, "z", 1000, 3000);
+
+            Transformacion rotacionBrazoINFDerechaAdelante = new Transformacion("Rotacion", -10, "z", 1000, 0);
+            Transformacion rotacionBrazoINFIzquierdaAdelante = new Transformacion("Rotacion", 10, "z", 1000, 1000);
+            Transformacion rotacionBrazoINFDerechaAtras = new Transformacion("Rotacion", 12, "z", 1000, 2000);
+            Transformacion rotacionBrazoINFIzquierdaAtras = new Transformacion("Rotacion", -10, "z", 1000, 3000);
+
+
+
+            // Transformaciones de las piernas izq y der
+            Transformacion rotacionPiernaDerechaAdelante = new Transformacion("Rotacion", -7, "z", 1000, 0);
+            Transformacion rotacionPiernaIzquierdaAdelante = new Transformacion("Rotacion", 7, "z", 1000, 1000);
+            Transformacion rotacionPiernaDerechaAtras = new Transformacion("Rotacion", 9, "z", 1000, 2000);
+            Transformacion rotacionPiernaIzquierdaAtras = new Transformacion("Rotacion", -7, "z", 1000, 3000);
+
+            Transformacion rotacionPiernaINFDerechaAdelante = new Transformacion("Rotacion", -7, "z", 1000, 0);
+            Transformacion rotacionPiernaINFIzquierdaAdelante = new Transformacion("Rotacion", 7, "z", 1000, 1000);
+            Transformacion rotacionPiernaINFDerechaAtras = new Transformacion("Rotacion", 9, "z", 1000, 2000);
+            Transformacion rotacionPiernaINFIzquierdaAtras = new Transformacion("Rotacion", -7, "z", 1000, 3000);
 
 
             listaDeConversiones.Add(balanceoArriba);
             listaDeConversiones.Add(balanceoAbajo);
             listaDeConversiones.Add(balanceoArriba);
             listaDeConversiones.Add(balanceoAbajo);
+         
 
-            listaDeConversionesBrazo.Add(rotacionBrazoDerechoAdelante);
-            listaDeConversionesBrazo.Add(rotacionBrazoDerechoAtras);
-            listaDeConversionesBrazo.Add(rotacionBrazoIzquierdoAdelante);
-            listaDeConversionesBrazo.Add(rotacionBrazoIzquierdoAtras);
-            listaDeConversionesBrazo.Add(rotacionBrazoDerechoAdelante);
-            listaDeConversionesBrazo.Add(rotacionBrazoDerechoAtras);
-            listaDeConversionesBrazo.Add(rotacionBrazoIzquierdoAdelante);
-            listaDeConversionesBrazo.Add(rotacionBrazoIzquierdoAtras);
+
+            List<Transformacion> listaDeConversionesBrazoDer = new List<Transformacion>();
+            listaDeConversionesBrazoDer.Add(brazoDERSAdel);
+            listaDeConversionesBrazoDer.Add(brazoDERSAtras);
+
+            List<Transformacion> listaDeConversionesBrazoIzq = new List<Transformacion>();
+            listaDeConversionesBrazoIzq.Add(brazoIZQSAdel);
+            listaDeConversionesBrazoIzq.Add(brazoIZQSAtras);
+
+
+
+            //listaDeConversionesAnteBrazoI1.Add(antebrazoIZQSAdel);
+            //listaDeConversionesAnteBrazoI1.Add(antebrazoIZQSAtras);
+  
+
+            List<Transformacion> listaDeConversionesBrazoDer2 = new List<Transformacion>();
+            listaDeConversionesBrazoDer2.Add(brazoDERSAdel2); ///
+            listaDeConversionesBrazoDer2.Add(brazoDERSAtras2);
+
+            List<Transformacion> listaDeConversionesBrazoIzq2 = new List<Transformacion>();
+            listaDeConversionesBrazoIzq2.Add(brazoIZQSAdel2);
+            listaDeConversionesBrazoIzq2.Add(brazoIZQSAtras2);
+
+            List<Transformacion> listaDeConversionesAnteBrazoDer2 = new List<Transformacion>();
+            listaDeConversionesAnteBrazoDer2.Add(antebrazoDERSAdel2); ///
+            listaDeConversionesAnteBrazoDer2.Add(antebrazoDERSAtras2);
+
+            List<Transformacion> listaDeConversionesAnteBrazoIzq2 = new List<Transformacion>();
+            listaDeConversionesAnteBrazoIzq2.Add(antebrazoIZQSAdel2);
+            listaDeConversionesAnteBrazoIzq2.Add(antebrazoIZQSAtras2);
+
+
+            List<Transformacion> listaDeConversionesAnteBrazoDer = new List<Transformacion>();
+            listaDeConversionesAnteBrazoDer.Add(antebrazoDERSAdel); ///
+            listaDeConversionesAnteBrazoDer.Add(antebrazoDERSAtras);
+
+            List<Transformacion> listaDeConversionesAnteBrazoIzq = new List<Transformacion>();
+            listaDeConversionesAnteBrazoIzq.Add(antebrazoIZQSAdel);
+            listaDeConversionesAnteBrazoIzq.Add(antebrazoIZQSAtras);
+
+
+
+            List<Transformacion> listaDeConversionesBrazoS = new List<Transformacion>();
+            listaDeConversionesBrazoS.Add(rotacionBrazoDerechaAdelante);
+            listaDeConversionesBrazoS.Add(rotacionBrazoIzquierdaAtras);
+            listaDeConversionesBrazoS.Add(rotacionBrazoDerechaAtras);
+            listaDeConversionesBrazoS.Add(rotacionBrazoIzquierdaAtras);
+
+            List<Transformacion> listaDeConversionesBrazoI = new List<Transformacion>();
+
+            listaDeConversionesBrazoI.Add(rotacionBrazoINFDerechaAdelante);
+            listaDeConversionesBrazoI.Add(rotacionBrazoINFIzquierdaAtras);
+            listaDeConversionesBrazoI.Add(rotacionBrazoINFDerechaAtras);
+            listaDeConversionesBrazoI.Add(rotacionBrazoINFIzquierdaAtras);
 
 
             listaDeConversiones.Add(accion);
             listaDeConversiones.Add(accion1);
             listaDeConversiones.Add(accion11);
-            listaDeConversiones.Add(accion14); 
+            listaDeConversiones.Add(accion14);
             listaDeConversiones.Add(accion17);
-          //  listaDeConversiones.Add(accion12);
 
 
-            listaDeConversionesBrazo.Add(brazoA);
-            //listaDeConversionesBrazo.Add(brazoA1);
-            listaDeConversionesBrazo.Add(antebrazoA);
-            //listaDeConversionesBrazo.Add(antebrazoA1);
+            //listaDeConversionesBrazo.Add(brazoA);
+            //listaDeConversionesBrazo.Add(antebrazoA);
 
 
             listaDeConversionesP.Add(accion01P);
@@ -838,6 +917,14 @@ namespace OpenTK_GitHub
             List<Transformacion> listaDeConversionesPiernaDerecha = new List<Transformacion>();
             listaDeConversionesPiernaDerecha.Add(rotacionPiernaDerechaAdelante);
             listaDeConversionesPiernaDerecha.Add(rotacionPiernaDerechaAtras);
+
+            List<Transformacion> listaDeConversionesPiernaINFDerecha = new List<Transformacion>();
+            listaDeConversionesPiernaINFDerecha.Add(rotacionPiernaINFDerechaAdelante);
+            listaDeConversionesPiernaINFDerecha.Add(rotacionPiernaINFDerechaAtras);
+
+            //listaDeConversionesPiernaDerecha.Add(piernaArribaI); //
+            //listaDeConversionesPiernaDerecha.Add(piernaArribaI1);//
+
             listaDeConversionesPiernaDerecha.Add(patearElBalon);
             listaDeConversionesPiernaDerecha.Add(patearElBalon1);
 
@@ -845,27 +932,58 @@ namespace OpenTK_GitHub
             listaDeConversionesPiernaInf.Add(patearElBalonInf);
             listaDeConversionesPiernaInf.Add(patearElBalonInf1);
 
+           // listaDeConversionesPiernaInf.Add(piernaAbajoI);  //
+           //// listaDeConversionesPiernaInf.Add(piernaAbajoI1);//
+
+
 
             // Para la pierna izquierda
             List<Transformacion> listaDeConversionesPiernaIzquierda = new List<Transformacion>();
             listaDeConversionesPiernaIzquierda.Add(rotacionPiernaIzquierdaAdelante);
             listaDeConversionesPiernaIzquierda.Add(rotacionPiernaIzquierdaAtras);
 
+            List<Transformacion> listaDeConversionesPiernaINFIzquierda = new List<Transformacion>();
+            listaDeConversionesPiernaINFIzquierda.Add(rotacionPiernaINFIzquierdaAdelante);
+            listaDeConversionesPiernaINFIzquierda.Add(rotacionPiernaINFIzquierdaAtras);
 
 
-            Acciones acciones = new Acciones("humano", listaDeConversiones);
+            
+            Acciones acciones = new Acciones("persona", listaDeConversiones);
             Acciones acciones4 = new Acciones("balon", "pelota", listaDeConversionesP);
-            Acciones acciones5 = new Acciones("humano", "brazo", listaDeConversionesBrazo);
-            Acciones acciones6 = new Acciones("humano", "antebrazo", listaDeConversionesBrazo);
+
+            Acciones acciones5 = new Acciones("persona", "brazo", listaDeConversionesBrazoS);
+            Acciones acciones6 = new Acciones("persona", "antebrazo", listaDeConversionesBrazoI);
+
+
+            Acciones acciones7 = new Acciones("persona", "brazo1", listaDeConversionesBrazoDer);
+            Acciones acciones8 = new Acciones("persona", "brazo", listaDeConversionesBrazoIzq);
+
+
+            //mov de los brazos al saltar
+
+            Acciones acciones9 = new Acciones("persona", "brazo", listaDeConversionesBrazoDer2);
+            Acciones acciones10 = new Acciones("persona", "brazo1", listaDeConversionesBrazoIzq2);
+            Acciones acciones11 = new Acciones("persona", "antebrazo", listaDeConversionesAnteBrazoDer2);
+            Acciones acciones12 = new Acciones("persona", "antebrazo1", listaDeConversionesAnteBrazoIzq2);
+            //
+
+            Acciones acciones13 = new Acciones("persona", "antebrazo1", listaDeConversionesAnteBrazoDer);
+            Acciones acciones14 = new Acciones("persona", "antebrazo", listaDeConversionesAnteBrazoIzq);
+
+
+
 
 
 
             //pierna
-            Acciones accionesPiernaDerecha = new Acciones("humano", "pierna", listaDeConversionesPiernaDerecha);
-            Acciones accionesPiernaIzquierdaInf = new Acciones("humano", "InferiorPierna", listaDeConversionesPiernaInf);
-            Acciones accionesPiernaIzquierda = new Acciones("humano", "pierna1", listaDeConversionesPiernaIzquierda);
-            Acciones accionesPiernaDerecha1 = new Acciones("humano", "InferiorPierna", listaDeConversionesPiernaDerecha);
-            Acciones accionesPiernaIzquierda2 = new Acciones("humano", "InferiorPierna1", listaDeConversionesPiernaIzquierda);
+            Acciones accionesPiernaDerecha = new Acciones("persona", "pierna", listaDeConversionesPiernaDerecha);
+            Acciones accionesPiernaIzquierda = new Acciones("persona", "pierna1", listaDeConversionesPiernaIzquierda);
+             Acciones accionesPiernaDerecha1 = new Acciones("persona", "InferiorPierna", listaDeConversionesPiernaINFDerecha);
+             Acciones accionesPiernaIzquierda2 = new Acciones("persona", "InferiorPierna1", listaDeConversionesPiernaINFIzquierda);
+
+            // patear balon
+            Acciones accionesPiernaIzquierdaInfPatear = new Acciones("persona", "InferiorPierna", listaDeConversionesPiernaInf);
+
 
 
             List<Acciones> listaDeAcciones = new List<Acciones>();
@@ -873,6 +991,14 @@ namespace OpenTK_GitHub
             listaDeAcciones.Add(acciones4);
             listaDeAcciones.Add(acciones5);
             listaDeAcciones.Add(acciones6);
+            listaDeAcciones.Add(acciones7);
+            listaDeAcciones.Add(acciones8);
+            listaDeAcciones.Add(acciones9);
+            listaDeAcciones.Add(acciones10);
+            listaDeAcciones.Add(acciones11);
+            listaDeAcciones.Add(acciones12);
+            listaDeAcciones.Add(acciones13);
+            listaDeAcciones.Add(acciones14);
 
 
             //
@@ -880,7 +1006,7 @@ namespace OpenTK_GitHub
             listaDeAcciones.Add(accionesPiernaIzquierda);
             listaDeAcciones.Add(accionesPiernaDerecha1);
             listaDeAcciones.Add(accionesPiernaIzquierda2);
-            listaDeAcciones.Add(accionesPiernaIzquierdaInf);
+            listaDeAcciones.Add(accionesPiernaIzquierdaInfPatear);
 
 
             libreto = new Libreto(listaDeAcciones, animacion);
@@ -890,10 +1016,14 @@ namespace OpenTK_GitHub
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-
             string path = @"escenario.json"; //direccion de arcv json
             escenario = SceneSerializer.JsonStage(path);
 
+
+
+
+            //string nombreArchivo = "animacion.json";
+            //SceneSerializer.SaveStage(nombreArchivo, escenario);
 
             GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
             GL.MatrixMode(MatrixMode.Projection);
@@ -908,14 +1038,14 @@ namespace OpenTK_GitHub
         }
         protected override void OnRenderFrame(FrameEventArgs e)
         {
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit); //wea de la doc
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit); 
 
             animacion.draw();
             escenario.draw();
             SwapBuffers();
             base.OnRenderFrame(e);
         }
-
+        
         protected override void OnKeyDown(KeyboardKeyEventArgs e)
         {
             //if (e.Key == Key.K)
@@ -924,7 +1054,17 @@ namespace OpenTK_GitHub
                 ejecutar.Start();
             }
 
-           
+            if (Keyboard.GetState().IsKeyDown(Key.L))
+            {
+                
+                ejecutar = new Thread(controlador.ReiniciarAnimacion);
+                libreto.Escena.clear();
+
+                ejecutar.Start();
+            }
+
+
+
             if (Keyboard.GetState().IsKeyDown(Key.X))
             {
                 animacion.rotate("x", 1.8f);
@@ -942,11 +1082,14 @@ namespace OpenTK_GitHub
             {
                 animacion.scale("x", 1.05f);
             }
+            if (Keyboard.GetState().IsKeyDown(Key.P))
+            {
+                animacion.buscarObjeto("balon").buscarPartes("pelota").rotate("y", 2.0f);
+            }
 
-            //if (Keyboard.GetState().IsKeyDown(Key.Number2))
-            //{
-            //    cuarto.scale(1.05f);
-            //}
+
+
+
 
 
             base.OnKeyDown(e);

@@ -119,11 +119,11 @@ namespace OpenTK_GitHub.Entorno
             }
         }
 
-        public void limpiar()
+        public void clear()
         {
             foreach (Poligono poligono in poligonos.Values)
             {
-                poligono.limpiar();
+                poligono.clear();
             }
         }
     }
